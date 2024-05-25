@@ -1,0 +1,1782 @@
+ //____________________
+// MUSIC MENU 
+//____________________
+{
+	menuDef  
+	{
+		name					"ingame_music"
+		visible					0
+		fullscreen				0
+		outOfBoundsClick							// this closes the window if it gets a click out of the rectangle
+		rect					45 45 570 400
+		focusColor				0 0.4 0.8 1
+		style					1
+		border					1
+
+
+		// Overall window backdrop
+		itemDef 
+		{
+			name				background_pic
+			group				none
+			style				WINDOW_STYLE_FILLED
+			rect				0 0 570 400
+			border				1
+			bordercolor			0 0 0 1
+			backcolor			0.1 0.1 0.1 0.5
+			forecolor			1 1 1 1
+			visible				1
+			decoration
+		}
+
+		itemDef 
+		{
+			name				playerconfigtitle
+			style				WINDOW_STYLE_FILLED
+			text				"Music"
+			rect				1 1 570 28
+			textalign			ITEM_ALIGN_CENTER		
+			textalignx			255
+			textaligny			2
+			outlinecolor		1 .5 .5 .5
+			backcolor			0 0 0 1
+			font				3
+			textscale			0.9
+			forecolor			1 1 1 1
+			border				0
+			bordercolor			0 0 0 0
+			visible				1 
+		}
+                itemDef 
+	        {
+			name				music1button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				60 30 170 23
+			background			"gfx/menus/menu_buttonback"			// Frame around button
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+		itemDef 
+		{
+			name				music1
+			group				none
+			text				"Artus Topside - Action" 
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_EMPTY
+			rect				77 28 180 20
+			font				2
+			textscale			0.58
+			textalignx			120
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music1button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music1button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/artus_topside/impbased_action" ; 
+				uiScript		closeingame 
+	                }
+                }            
+                
+                itemDef 
+	        {
+			name				music3button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				60 51 170 23
+			background			"gfx/menus/menu_buttonback"			// Frame around button
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music3
+			group				none
+			text				"Bespin Streets - Action" 
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_EMPTY
+			rect				77 49 180 20
+			font				2
+			textscale			0.58
+			textalignx			120
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music3button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music3button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/bespin_streets/bespina_action" ; 
+				uiScript		closeingame 
+	                }
+                }            
+
+                itemDef 
+	        {
+			name				music4button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				232 112 170 23
+			background			"gfx/menus/menu_buttonback"			// Frame around button
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music4
+			group				none
+			text				"Hoth - Explore" 
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_EMPTY
+			rect				232 110 180 20
+			font				2
+			textscale			0.58
+			textalignx			120
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music4button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music4button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/hoth2/hoth2_explore" ; 
+				uiScript		closeingame 
+	                }
+                }            
+                
+                itemDef 
+	        {
+			name				music5button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				60 72 170 23
+			background			"gfx/menus/menu_buttonback"			// Frame around button
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music5
+			group				none
+			text				"Hoth - Action" 
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_EMPTY
+			rect				77 70 180 20
+			font				2
+			textscale			0.58
+			textalignx			120
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music5button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music5button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/hoth2/hoth2_action" ; 
+				uiScript		closeingame 
+	                }
+                }            
+
+                itemDef 
+	        {
+			name				music6button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				232 133 170 23
+			background			"gfx/menus/menu_buttonback"			// Frame around button
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music6
+			group				none
+			text				"Kor. Dark - Explore" 
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_EMPTY
+			rect				232 131 180 20
+			font				2
+			textscale			0.58
+			textalignx			120
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music6button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music6button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/kor_dark/korrib_dark_explore" ; 
+				uiScript		closeingame 
+	                }
+                }            
+
+
+
+
+
+                itemDef 
+	        {
+			name				music8button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				232 154 170 23
+			background			"gfx/menus/menu_buttonback"			// Frame around button
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music8
+			group				none
+			text				"Kor. Lite - Explore" 
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_EMPTY
+			rect				232 152 180 20
+			font				2
+			textscale			0.58
+			textalignx			120
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music8button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music8button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/kor_lite/korrib_lite_explore" ; 
+				uiScript		closeingame 
+	                }
+                }                      
+
+                itemDef 
+	        {
+			name				music9button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				60 112 170 23
+			background			"gfx/menus/menu_buttonback"			// Frame around button
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music9
+			group				none
+			text				"Kor. Lite - Action" 
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_EMPTY
+			rect				77 110 180 20
+			font				2
+			textscale			0.58
+			textalignx			120
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music9button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music9button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/kor_lite/final_battle" ; 
+				uiScript		closeingame 
+	                }
+                }
+
+                itemDef 
+	        {
+			name				music10button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				232 175 170 23
+			background			"gfx/menus/menu_buttonback"			// Frame around button
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music10
+			group				none
+			text				"T1 Fatal - Explore" 
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_EMPTY
+			rect				232 173 180 20
+			font				2
+			textscale			0.58
+			textalignx			120
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music10button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music10button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t1_fatal/tunnels_explore" ; 
+				uiScript		closeingame 
+	                }
+                } 
+
+                itemDef 
+	        {
+			name				music11button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				60 133 170 23
+			background			"gfx/menus/menu_buttonback"			// Frame around button
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music11
+			group				none
+			text				"T1 Fatal - Action" 
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_EMPTY
+			rect				77 131 180 20
+			font				2
+			textscale			0.58
+			textalignx			120
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music11button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music11button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t1_fatal/tunnels_action" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+                      
+                itemDef 
+	        {
+			name				music12button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				232 196 170 23
+			background			"gfx/menus/menu_buttonback"			// Frame around button
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music12
+			group				none
+			text				"T1 Sour - Explore" 
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_EMPTY
+			rect				232 194 180 20
+			font				2
+			textscale			0.58
+			textalignx			120
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music12button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music12button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t1_sour/dealsour_explore" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+                
+                itemDef 
+	        {
+			name				music13button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				60 154 170 23
+			background			"gfx/menus/menu_buttonback"			// Frame around button
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music13
+			group				none
+			text				"T1 Rail - Action" 
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_EMPTY
+			rect				77 152 180 20
+			font				2
+			textscale			0.58
+			textalignx			120
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music13button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music13button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t1_rail/rail_nowhere" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+                
+                itemDef 
+	        {
+			name				music14button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				232 217 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music14
+			group				none
+			text				"T1 Surprise - Explore" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				232 215 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music14button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music14button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t1_surprise/tusken_explore" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music15button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				77 173 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music15
+			group				none
+			text				"T1 Sour - Action" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				77 171 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music15button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music15button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t1_sour/dealsour_action" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music16button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				77 192 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music16
+			group				none
+			text				"T2 Dpred - Action" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				77 190 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music16button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music16button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t2_dpred/impbaseb_action" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+                       
+                itemDef 
+	        {
+			name				music17button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				77 215 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music17
+			group				none
+			text				"T1 Surprise - Action" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				77 213 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music17button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music17button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t1_surprise/tusken_action" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music18button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				77 236 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music18
+			group				none
+			text				"T2 Rancor - Action" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				77 234 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music18button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music18button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t2_rancor/rancor_action" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music19button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				77 257 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music19
+			group				none
+			text				"T2 Rogue - Action" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				77 255 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music19button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music19button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t2_rogue/narshaada_action" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music20button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				77 278 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music20
+			group				none
+			text				"T2 Wedge - Action" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				77 276 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music20button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music20button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t2_wedge/besplat_action" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music21button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				77 299 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music21
+			group				none
+			text				"T3 Byss - Action" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				77 297 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music21button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music21button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t3_byss/alienhb_action" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music22button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				77 320 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music22
+			group				none
+			text				"Vjun2 - Action" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				77 318 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music22button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music22button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/vjun2/impbasee_action" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music23button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				232 238 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music23
+			group				none
+			text				"T2 Dpred - Explore" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				232 236 180 25
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music23button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music23button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t2_dpred/impbaseb_explore" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music24button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				232 259 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music24
+			group				none
+			text				"T2 Rancor - Explore" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				232 257 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music24button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music24button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t2_rancor/rancor_explore" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music25button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				232 280 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music25
+			group				none
+			text				"T2 Rogue - Explore" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				232 278 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music25button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music25button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t2_rogue/narshaada_explore" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music26button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				232 299 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music26
+			group				none
+			text				"T2 Wedge - Explore" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				232 297 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music26button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music26button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t2_wedge/besplat_explore" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music27button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				232 320 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music27
+			group				none
+			text				"T3 Byss - Explore" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				232 318 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music27button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music27button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/t3_byss/alienhb_explore" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+                
+                itemDef 
+	        {
+			name				music28button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				383 30 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music28
+			group				none
+			text				"Vjun 2 - Explore" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				400 28 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music28button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music28button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/vjun2/impbasee_explore" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music29button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				383 51 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music29
+			group				none
+			text				"Vjun 3 - Explore" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				400 49 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music29button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music29button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/vjun3/vjun3_explore" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music30button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				383 72 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music30
+			group				none
+			text				"Yavin 1 - Explore" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				400 70 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music30button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music30button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/yavin1/swamp_explore" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music31button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				227 72 170 23
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music31
+			group				none
+			text				"Yavin 2 - Explore" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				232 70 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music31button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music31button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/yavin2/yavtemp2_explore" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music32button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				227 93 170 25
+                  background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music32
+			group				none
+			text				"Yavin 2 Old - Explore" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				232 91 170 25
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music32button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music32button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/yavin2_old/yavtemp_explore" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music33button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				77 93 170 25
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music33
+			group				none
+			text				"Vjun 3 - Action" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				77 91 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music33button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music33button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/vjun3/vjun3_action" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+  
+
+              
+                itemDef 
+	        {
+			name				music34button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				227 30 170 25
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music34
+			group				none
+			text				"Yavin 1 - Action" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				232 28 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music34button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music34button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/yavin1/swamp_action" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+	        {
+			name				music35button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				227 51 170 25
+                        background			"gfx/menus/menu_buttonback"			
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+	        }
+
+	        itemDef 
+	        {
+			name				music35
+			group				none
+			text				"Yavin 2 - Action" 
+			type				1
+			style				WINDOW_STYLE_EMPTY
+			rect				232 49 180 20
+			font				2
+			textscale			0.58
+			textalignx			120		
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music35button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music35button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/yavin2/yavtemp2_action" ; 
+				uiScript		closeingame 
+	                }
+                }                                           
+
+                itemDef 
+		{
+			name				music36button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				395 93 170 23
+			background			"gfx/menus/menu_buttonback"			// Frame around button
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+		}
+
+		itemDef 
+		{
+			name				music36
+			group				none
+			text				"Duel" 
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_EMPTY
+			rect				383 91 180 20
+			font				2
+			textscale			0.58
+			textalignx			120
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music36button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music36button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/mp/duel" ; 
+				uiScript		closeingame
+	                }
+                }
+
+                itemDef 
+		{
+			name				music37button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				383 112 170 23
+			background			"gfx/menus/menu_buttonback"			// Frame around button
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+		}
+
+		itemDef 
+		{
+			name				music37
+			group				none
+			text				"MP Action 1" 
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_EMPTY
+			rect				400 110 180 20
+			font				2
+			textscale			0.58
+			textalignx			120
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music37button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music37button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/mp/mp_action1" ; 
+				uiScript		closeingame
+	                }
+                }
+
+                itemDef 
+		{
+			name				music38button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				383 133 170 25
+			background			"gfx/menus/menu_buttonback"			// Frame around button
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+		}
+
+		itemDef 
+		{
+			name				music38
+			group				none
+			text				"MP Action 2" 
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_EMPTY
+			rect			      400 131 180 20
+			font				2
+			textscale			0.58
+			textalignx			120
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music38button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music38button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/mp/mp_action2" ; 
+				uiScript		closeingame
+	                }
+                }
+
+                itemDef 
+		{
+			name				music39button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				383 154 170 25
+			background			"gfx/menus/menu_buttonback"			// Frame around button
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+		}
+
+		itemDef 
+		{
+			name				music39
+			group				none
+			text				"MP Action 3" 
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_EMPTY
+			rect				400 152 180 20
+			font				2
+			textscale			0.58
+			textalignx			120
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music39button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music39button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/mp/mp_action3" ; 
+				uiScript		closeingame
+	                }
+                }
+
+                itemDef 
+		{
+			name				music40button_glow
+			group				none
+			style				WINDOW_STYLE_SHADER
+			rect				383 175 170 25
+			background			"gfx/menus/menu_buttonback"			// Frame around button
+			forecolor			1 1 1 1
+			visible			0
+			decoration
+		}
+
+		itemDef 
+		{
+			name				music40
+			group				none
+			text				"MP Action 4" 
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_EMPTY
+			rect				400 173 180 20
+			font				2
+			textscale			0.58
+			textalignx			120
+			textaligny			5
+			textalign			ITEM_ALIGN_RIGHT
+			textstyle			3
+			forecolor			1 1 1 1
+			visible				1
+
+			mouseEnter 
+			{ 
+				show			music40button_glow
+			}
+			mouseExit 
+			{ 
+				hide			music40button_glow
+			}	  	  
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+				exec			"music music/mp/mp_action4" ; 
+				uiScript		closeingame
+	                }
+                }
+    
+ 
+
+	
+    
+ 
+
+ 
+
+    
+                       
+      }
+}
+
+
+
+
+

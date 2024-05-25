@@ -100,7 +100,3 @@ GPATH
 # ignore all subdirectories of the build directory
 /[Bb]uild/*/*
 [Bb]uild*/
-
-#ignore assets directories for now
-ojpenhanced/
-resources/
