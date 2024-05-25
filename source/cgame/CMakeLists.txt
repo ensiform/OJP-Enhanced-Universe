@@ -69,6 +69,8 @@ set(SDKCGAMESOURCES
 	"${SRCDir}/cgame/fx_heavyrepeater.c"
 	"${SRCDir}/cgame/fx_rocketlauncher.c"
 
+	"${SRCDir}/game/AnimalNPC.c"
+	"${SRCDir}/game/bg_g2_utils.c"
 	"${SRCDir}/game/bg_misc.c"
 	"${SRCDir}/game/bg_panimate.c"
 	"${SRCDir}/game/bg_pmove.c"
@@ -78,8 +80,11 @@ set(SDKCGAMESOURCES
 	"${SRCDir}/game/bg_slidemove.c"
 	"${SRCDir}/game/bg_vehicleLoad.c"
 	"${SRCDir}/game/bg_weapons.c"
+	"${SRCDir}/game/FighterNPC.c"
 	"${SRCDir}/game/q_math.c"
 	"${SRCDir}/game/q_shared.c"
+	"${SRCDir}/game/SpeederNPC.c"
+	"${SRCDir}/game/WalkerNPC.c"
 	
 	"${SRCDir}/ui/ui_shared.c"
 )
