@@ -18,8 +18,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
 
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v2
@@ -35,7 +33,7 @@ jobs:
     - name: Build
       working-directory: ${{github.workspace}}/build/actions
       shell: cmd
-      run: cmake --build . --config ${{ matrix.build_type }} --parallel msbuild
+      run: cmake --build . --config ${{ matrix.build_type }} --parallel
 
     - uses: 'actions/upload-artifact@v4'
       if: ${{ matrix.build_type == 'Release' }}
@@ -53,8 +51,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
 
     - name: Create Build Environment
       run: |
@@ -69,7 +65,7 @@ jobs:
     - name: Build
       working-directory: ${{github.workspace}}/build/actions
       shell: bash
-      run: make
+      run: cmake --build . --config ${{ matrix.build_type }} --parallel
 
 #todo the proper extension
 
@@ -91,12 +87,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
 
     - name: Create Build Environment
       run: |
         mkdir -p ${{github.workspace}}/build/actions
+        sudo apt-get -y install ninja-build
   
     - name: Configure CMake
       shell: bash
@@ -106,7 +101,7 @@ jobs:
     - name: Build
       working-directory: ${{github.workspace}}/build/actions
       shell: bash
-      run: make
+      run: cmake --build . --config ${{ matrix.build_type }} --parallel
 
     - uses: 'actions/upload-artifact@v4'
       if: ${{ matrix.build_type == 'Release' }}
