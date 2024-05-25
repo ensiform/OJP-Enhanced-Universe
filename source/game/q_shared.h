@@ -222,37 +222,21 @@ static ID_INLINE float BigFloat(const float *l) {return  FloatSwap(l); }
 
 #define	PATH_SEP	'/'
 
-#define __rlwimi(out, in, shift, maskBegin, maskEnd) asm("rlwimi %0,%1,%2,%3,%4" : "=r" (out) : "r" (in), "i" (shift), "i" (maskBegin), "i" (maskEnd))
-#define __dcbt(addr, offset) asm("dcbt %0,%1" : : "b" (addr), "r" (offset))
-
-static inline unsigned int __lwbrx(register void *addr, register int offset) {
-    register unsigned int word;
-    
-    asm("lwbrx %0,%2,%1" : "=r" (word) : "r" (addr), "b" (offset));
-    return word;
-}
-
-static inline unsigned short __lhbrx(register void *addr, register int offset) {
-    register unsigned short halfword;
-    
-    asm("lhbrx %0,%2,%1" : "=r" (halfword) : "r" (addr), "b" (offset));
-    return halfword;
-}
-
-static inline float __fctiw(register float f) {
-    register float fi;
-    
-    asm("fctiw %0,%1" : "=f" (fi) : "f" (f));
-
-    return fi;
-}
-
+#if !idppc 
+inline static short BigShort( short l) { return ShortSwap(l); }
+#define LittleShort
+inline static int BigLong(int l) { return LongSwap(l); }
+#define LittleLong
+inline static float BigFloat(const float *l) { return FloatSwap(l); }
+#define LittleFloat
+#elif
 #define BigShort
-static inline short LittleShort(short l) { return ShortSwap(l); }
+inline static short LittleShort(short l) { return ShortSwap(l); }
 #define BigLong
-static inline int LittleLong (int l) { return LongSwap(l); }
+inline static int LittleLong (int l) { return LongSwap(l); }
 #define BigFloat
-static inline float LittleFloat (const float l) { return FloatSwap(&l); }
+inline static float LittleFloat (const float *l) { return FloatSwap(l); }
+#endif
 
 #endif
 
