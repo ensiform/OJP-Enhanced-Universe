@@ -7,7 +7,6 @@ set(InSDK TRUE)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 set(ProjectName "OJP" CACHE STRING "Project Name")
-#set(ProjectURL "https://jk2mv.org")
 project(${ProjectName})
 
 # Languages
@@ -32,6 +31,18 @@ if(WIN32)
     endif()
 elseif(APPLE)
     set(GlobalDefines ${GlobalDefines} "MACOS_X")
+
+    if(CMAKE_OSX_ARCHITECTURES)
+        if(CMAKE_OSX_ARCHITECTURES MATCHES "^x86_64" OR CMAKE_OSX_ARCHITECTURES MATCHES "^arm64")
+            if( NOT CMAKE_OSX_ARCHITECTURES MATCHES CMAKE_SYSTEM_PROCESSOR )
+                message(STATUS "Forcing architecture to ${CMAKE_OSX_ARCHITECTURES} on ${CMAKE_SYSTEM_PROCESSOR}")
+            endif()
+            set(CMAKE_SYSTEM_PROCESSOR "${CMAKE_OSX_ARCHITECTURES}" CACHE STRING "")
+        else()
+            message(FATAL_ERROR "Unsupported macOS architecture")
+        endif()
+    endif()
+
     if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(arm64|aarch64)$")
         set(GlobalDefines ${GlobalDefines} "ARCH_ARM64")
         set(Architecture "arm64")
