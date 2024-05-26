@@ -23,7 +23,8 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     - name: Create Build Environment
-      run: cmake -E make_directory ${{github.workspace}}/build/actions
+      shell: cmd
+      run: cmake -E make_directory ${{github.workspace}}\build\actions
 
     - name: Configure CMake
       shell: bash
