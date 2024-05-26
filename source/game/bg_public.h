@@ -268,12 +268,10 @@ typedef enum {
 
 #define MAX_CUSTOM_SIEGE_SOUNDS 30
 
-#include "../namespace_begin.h"
 extern const char *bg_customSiegeSoundNames[MAX_CUSTOM_SIEGE_SOUNDS];
 
 extern const char *bgToggleableSurfaces[BG_NUM_TOGGLEABLE_SURFACES];
 extern const int bgToggleableSurfaceDebris[BG_NUM_TOGGLEABLE_SURFACES];
-#include "../namespace_end.h"
 
 typedef enum {
 	HANDEXTEND_NONE = 0,
@@ -309,13 +307,7 @@ typedef enum
 //for supplier class items
 #define TOSS_DEBOUNCE_TIME				5000
 
-//[Linux]
-#ifndef __linux__
 typedef enum {
-#else
-enum {
-#endif
-//[/Linux]
 	GT_FFA,				// free for all
 	GT_HOLOCRON,		// holocron ffa
 	GT_JEDIMASTER,		// jedi master
@@ -330,26 +322,16 @@ enum {
 	GT_CTF,				// capture the flag
 	GT_CTY,
 	GT_MAX_GAME_TYPE
-};
-typedef int gametype_t;
+} gametype_t;
 
 typedef enum { GENDER_MALE, GENDER_FEMALE, GENDER_NEUTER } gender_t;
 
 extern vec3_t WP_MuzzlePoint[WP_NUM_WEAPONS];
 extern vec3_t WP_MuzzlePoint2[WP_NUM_WEAPONS];//[DualPistols]
 
-#include "../namespace_begin.h"
 extern int forcePowerSorted[NUM_FORCE_POWERS];
-#include "../namespace_end.h"
 
-//[Linux]
-#ifndef __linux__
-typedef enum
-#else
-enum
-#endif
-//[/Linux]
-{
+typedef enum {
 	SABERLOCK_TOP,
 	SABERLOCK_SIDE,
 	SABERLOCK_LOCK,
@@ -357,21 +339,15 @@ enum
 	SABERLOCK_SUPERBREAK,
 	SABERLOCK_WIN,
 	SABERLOCK_LOSE
-};
+} saberLockType_t;
 
-//[Linux]
-#ifndef __linux__
 typedef enum
-#else
-enum
-#endif
-//[/Linux]
 {
 	DIR_RIGHT,
 	DIR_LEFT,
 	DIR_FRONT,
 	DIR_BACK
-};
+} direction_t;
 
 /*
 ===================================================================================
@@ -395,10 +371,8 @@ typedef struct animation_s {
 } animation_t;
 #pragma pack(pop)
 
-#include "../namespace_begin.h"
 extern qboolean			BGPAFtextLoaded;
 extern animation_t		bgHumanoidAnimations[MAX_TOTALANIMATIONS];
-#include "../namespace_end.h"
 
 //[Asteroids]
 #define MAX_ANIM_FILES	64
@@ -500,8 +474,6 @@ typedef struct
 */
 //[/ANIMEVENTS]
 
-#include "../namespace_begin.h"
-
 extern bgLoadedAnim_t bgAllAnims[MAX_ANIM_FILES];
 
 //In SP this is shared in with the anim stuff, and humanoid anim sets can be loaded
@@ -517,8 +489,6 @@ extern bgLoadedAnim_t bgAllAnims[MAX_ANIM_FILES];
 //extern int bgNumAnimEvents;
 //[/ANIMEVENTS]
 #endif
-
-#include "../namespace_end.h"
 
 typedef enum {
 	PM_NORMAL,		// can accelerate and turn
@@ -543,13 +513,7 @@ typedef enum {
 } weaponstate_t;
 
 
-//[Linux]
-#ifndef __linux__
 typedef enum {
-#else
-enum {
-#endif
-//[/Linux]
 	FORCE_MASTERY_UNINITIATED,
 	FORCE_MASTERY_INITIATE,
 	FORCE_MASTERY_PADAWAN,
@@ -559,9 +523,8 @@ enum {
 	FORCE_MASTERY_JEDI_KNIGHT,
 	FORCE_MASTERY_JEDI_MASTER,
 	NUM_FORCE_MASTERY_LEVELS
-};
+} forceMasteries_t;
 
-#include "../namespace_begin.h"
 extern char *forceMasteryLevels[NUM_FORCE_MASTERY_LEVELS];
 extern int forceMasteryPoints[NUM_FORCE_MASTERY_LEVELS];
 
@@ -581,7 +544,6 @@ extern int forceMasteryPoints[NUM_FORCE_MASTERY_LEVELS];
 extern int bgForcePowerCost[NUM_TOTAL_SKILLS][NUM_FORCE_POWER_LEVELS];
 //extern int bgForcePowerCost[NUM_FORCE_POWERS][NUM_FORCE_POWER_LEVELS];
 //[/ExpSys]
-#include "../namespace_end.h"
 
 // pmove->pm_flags
 #define	PMF_DUCKED			1
@@ -692,8 +654,6 @@ typedef struct {
 	int			entSize; //size of the struct (gentity_t or centity_t) so things can be dynamic
 } pmove_t;
 
-#include "../namespace_begin.h"
-
 extern	pmove_t		*pm;
 
 #define SETANIM_TORSO 1
@@ -718,8 +678,6 @@ extern	pmove_t		*pm;
 // if a full pmove isn't done on the client, you can just update the angles
 void PM_UpdateViewAngles( playerState_t *ps, const usercmd_t *cmd );
 void Pmove (pmove_t *pmove);
-
-#include "../namespace_end.h"
 
 //===================================================================================
 
@@ -889,12 +847,7 @@ typedef enum {
 } effectTypes_t;
 
 // NOTE: may not have more than 16
-//[Linux]
-#ifndef __linux__
 typedef enum {
-#else
-enum {
-#endif
 //[/Linux]
 	//PW_NONE,
 
@@ -926,16 +879,9 @@ enum {
 	PW_OVERLOADED,	
 	PW_NUM_POWERUPS
 
-};
-typedef int powerup_t;
+} powerup_t;
 
-//[Linux]
-#ifndef __linux__
 typedef enum {
-#else
-enum {
-#endif
-//[/Linux]
 	HI_NONE,
 	HI_SEEKER,
 	HI_SHIELD,
@@ -958,16 +904,9 @@ enum {
 	HI_OVERLOAD,	
 	HI_GRAPPLE,		   
 	HI_NUM_HOLDABLE
-};
-typedef int holdable_t;
+} holdable_t;
 
-//[Linux]
-#ifndef __linux__
 typedef enum {
-#else
-enum {
-#endif
-//[/Linux]
 	FT_NONE,
 	FT_PUSHA,
 	FT_PULLA,
@@ -982,16 +921,9 @@ enum {
 	FT_RAGEA,
 	FT_DESTRUCTIONA,
 	FT_NUM_TYPE
-};
-typedef int forcetypes_t;
+} forcetypes_t;
 
-//[Linux]
-#ifndef __linux__
 typedef enum {
-#else
-enum {
-#endif
-//[/Linux]
 	WT_NONE,
 	WT_WRISTA,
 	WT_WRISTB,
@@ -1022,16 +954,9 @@ enum {
 	WT_OLDA,
 	WT_OLDB,
 	WT_NUM_TYPE
-};
-typedef int weapontypes_t;
+} weapontypes_t;
 
-//[Linux]
-#ifndef __linux__
 typedef enum {
-#else
-enum {
-#endif
-//[/Linux]
 	HT_NONE,
 	HT_FLAMETHROWERA,
 	HT_ELECTROSHOCKERA,
@@ -1040,8 +965,7 @@ enum {
 	HT_SQUADTEAMA,
 	HT_SQUADTEAMB,
 	HT_NUM_TYPE
-};
-typedef int itemtypes_t;
+} itemtypes_t;
 
 
 typedef enum {
@@ -1364,21 +1288,14 @@ typedef enum {
 } global_team_sound_t;
 
 
-//[Linux]
-#ifndef __linux__
 typedef enum {
-#else
-enum {
-#endif
-//[/Linux]
 	TEAM_FREE,
 	TEAM_RED,
 	TEAM_BLUE,
 	TEAM_SPECTATOR,
 
 	TEAM_NUM_TEAMS
-};
-typedef int team_t;
+} team_t;
 
 typedef enum {
 	DUELTEAM_FREE,
@@ -1480,13 +1397,7 @@ typedef enum {
 //---------------------------------------------------------
 
 // gitem_t->type
-//[Linux]
-#ifndef __linux__
 typedef enum {
-#else
-enum {
-#endif
-//[/Linux]
 	IT_BAD,
 	IT_WEAPON,				// EFX: rotate + upscale + minlight
 	IT_AMMO,				// EFX: rotate
@@ -1498,8 +1409,7 @@ enum {
 							// EFX: rotate + bob
 	IT_PERSISTANT_POWERUP,
 	IT_TEAM
-};
-typedef int itemType_t;
+} itemType_t;
 
 #define MAX_ITEM_MODELS 4
 
@@ -1522,7 +1432,6 @@ typedef struct gitem_s {
 } gitem_t;
 
 // included in both the game dll and the client
-#include "../namespace_begin.h"
 
 extern	gitem_t	bg_itemlist[];
 extern	int		bg_numItems;
@@ -1537,7 +1446,6 @@ gitem_t	*BG_FindItemForHoldable( holdable_t pw );
 
 qboolean	BG_CanItemBeGrabbed( int gametype, const entityState_t *ent, const playerState_t *ps );
 
-#include "../namespace_end.h"
 
 
 #define SABER_BLOCK_DUR 150		// number of milliseconds a block animation should take.
@@ -1669,13 +1577,7 @@ typedef struct
 #undef LS_NONE
 #endif
 
-//[Linux]
-#ifndef __linux__
 typedef enum {
-#else
-enum {
-#endif
-//[/Linux]
 	//totally invalid
 	LS_INVALID	= -1,
 	// Invalid, or saber not armed
@@ -1867,8 +1769,7 @@ enum {
 	LS_REFLECT_LL,
 
 	LS_MOVE_MAX//
-};
-typedef int saberMoveName_t;
+} saberMoveName_t;
 
 typedef enum {
 	Q_BR,
@@ -1896,21 +1797,17 @@ typedef struct
 	qboolean trailLength;
 } saberMoveData_t;
 
-#include "../namespace_begin.h"
-
 extern saberMoveData_t	saberMoveData[LS_MOVE_MAX];
 
 bgEntity_t *PM_BGEntForNum( int num );
 qboolean BG_KnockDownable(playerState_t *ps);
 qboolean BG_LegalizedForcePowers(char *powerOut, int maxRank, qboolean freeSaber, int teamForce, int gametype, int fpDisabled);
 
-#include "../namespace_end.h"
-
 #ifdef __LCC__ //can't inline it then, it is declared over in bg_misc in this case
 void BG_GiveMeVectorFromMatrix(mdxaBone_t *boltMatrix, int flags, vec3_t vec);
 #else
 // given a boltmatrix, return in vec a normalised vector for the axis requested in flags
-static ID_INLINE void BG_GiveMeVectorFromMatrix(mdxaBone_t *boltMatrix, int flags, vec3_t vec)
+ID_INLINE void BG_GiveMeVectorFromMatrix(mdxaBone_t *boltMatrix, int flags, vec3_t vec)
 {
 	switch (flags)
 	{
@@ -1952,8 +1849,6 @@ static ID_INLINE void BG_GiveMeVectorFromMatrix(mdxaBone_t *boltMatrix, int flag
 	}
 }
 #endif
-
-#include "../namespace_begin.h"
 
 void BG_IK_MoveArm(void *ghoul2, int lHandBolt, int time, entityState_t *ent, int basePose, vec3_t desiredPos, qboolean *ikInProgress,
 					 vec3_t origin, vec3_t angles, vec3_t scale, int blendTime, qboolean forceHalt);
@@ -2112,8 +2007,6 @@ extern int WeaponAttackAnim8[WP_NUM_WEAPONS];
 
 extern int forcePowerDarkLight[NUM_FORCE_POWERS];
 
-#include "../namespace_end.h"
-
 //[KnockdownSys]
 //this is the default minimum time for a level 0 player to wait before they can attempt to get up.
 //I'm not sure what this is supposed to be in SP since I don't have the define for this.
@@ -2135,6 +2028,3 @@ extern int forcePowerDarkLight[NUM_FORCE_POWERS];
 #define	HYPERSPACE_TURN_RATE		45.0f
 
 #endif //__BG_PUBLIC_H__
-//[LockedCvars]
-cvar_t *Hook_FindCvar(const char *cvarname);
-//[/LockedCvars]													

@@ -17,9 +17,7 @@ extern	qboolean		in_camera;
 int AcceptBotCommand(char *cmd, gentity_t *pl);
 //end rww
 
-#include "../namespace_begin.h"
 void WP_SetSaber( int entNum, saberInfo_t *sabers, int saberNum, const char *saberName );
-#include "../namespace_end.h"
 
 void Cmd_NPC_f( gentity_t *ent );
 void SetTeamQuick(gentity_t *ent, int team, qboolean doBegin);
@@ -678,7 +676,7 @@ void G_CheckTKAutoKickBan( gentity_t *ent )
 		if ( g_autoBanTKSpammers.integer > 0
 			&& ent->client->sess.TKCount >= g_autoBanTKSpammers.integer )
 		{
-			if ( ent->client->sess.IPstring )
+			if ( ent->client->sess.IPstring[0] )
 			{//ban their IP
 				AddIP( ent->client->sess.IPstring );
 			}

@@ -5,10 +5,9 @@
 // this file is only included when building a dll
 // syscalls.asm is included instead when building a qvm
 
-static int (QDECL *syscall)( int arg, ... ) = (int (QDECL *)( int, ...))-1;
+static dllSyscall_t syscall = (dllSyscall_t)-1;
 
-#include "../namespace_begin.h"
-void dllEntry( int (QDECL *syscallptr)( int arg,... ) ) {
+Q_EXPORT void dllEntry( dllSyscall_t syscallptr ) {
 	syscall = syscallptr;
 }
 
@@ -665,5 +664,3 @@ qboolean trap_G2API_AttachG2Model(void *ghoul2From, int modelIndexFrom, void *gh
 /*
 Ghoul2 Insert End
 */
-
-#include "../namespace_end.h"

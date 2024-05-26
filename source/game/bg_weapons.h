@@ -5,13 +5,7 @@
 #ifndef __WEAPONS_H__
 #define __WEAPONS_H__
 
-//[Linux]
-#ifndef __linux__
 typedef enum {
-#else
-enum {
-#endif
-//[/Linux]
 	WP_NONE,
 
 	WP_STUN_BATON,
@@ -42,8 +36,7 @@ enum {
 //	WP_GRAPPLING_HOOK,
 
 	WP_NUM_WEAPONS
-};
-typedef int weapon_t;
+} weapon_t;
 
 #define WP_BOT_LASER WP_NUM_WEAPONS+1 // 20
 #define WP_RAPID_FIRE_CONC WP_BOT_LASER+1 // 21

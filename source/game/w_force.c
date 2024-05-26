@@ -22,9 +22,7 @@ extern qboolean /*GAME_INLINE*/ WalkCheck( gentity_t * self );
 
 extern vmCvar_t		g_saberRestrictForce;
 
-#include "../namespace_begin.h"
 extern qboolean BG_FullBodyTauntAnim( int anim );
-#include "../namespace_end.h"
 
 extern bot_state_t *botstates[MAX_CLIENTS];
 //extern void player_Freeze(gentity_t* self);
@@ -897,9 +895,7 @@ void WP_SpawnInitForcePowers( gentity_t *ent )
 	//[/CoOp]
 }
 
-#include "../namespace_begin.h"
 extern qboolean BG_InKnockDown( int anim ); //bg_pmove.c
-#include "../namespace_end.h"
 
 qboolean IsMerc(gentity_t*ent)
 {
@@ -2745,7 +2741,7 @@ qboolean IsHybrid(gentity_t *ent)
 		merc = qtrue;	
 	else if(ent->client->skillLevel[SK_GRAPPLE])
 		merc = qtrue;
-	if(jedi && merc);
+	if(jedi && merc)
 		return qtrue;			 
 return qfalse;
 }
@@ -4873,7 +4869,7 @@ qboolean ForceTelepathyCheckDirectNPCTarget( gentity_t *self, trace_t *tr, qbool
 			WP_ForcePowerStart( self, FP_TELEPATHY, 0 );
 		}
 		else if ( (self->NPC && traceEnt->client->playerTeam != self->client->playerTeam)
-			|| (!self->NPC && traceEnt->client->playerTeam != self->client->sess.sessionTeam) )
+			|| (!self->NPC && traceEnt->client->playerTeam != self->client->playerTeam/* self->client->sess.sessionTeam */) )
 		{//an enemy
 			int override = 0;
 			if ( (traceEnt->NPC->scriptFlags&SCF_NO_MIND_TRICK) )
@@ -10019,7 +10015,7 @@ void FindGenericEnemyIndex(gentity_t *self)
 	float tlen;
 	gentity_t *ent;
 	gentity_t *besten = NULL;
-	float blen = 99999999;
+	float blen = 99999999.9f;
 	vec3_t a;
 
 	while (i < MAX_CLIENTS)
@@ -10482,7 +10478,7 @@ extern void G_ToggleVehicleCloak(playerState_t *ps);
 
 
 //[FatigueSys]
-static GAME_INLINE qboolean MeditateCheck( gentity_t * self )
+GAME_INLINE qboolean MeditateCheck( gentity_t * self )
 {		
 	int	anim;
 
@@ -10490,8 +10486,7 @@ static GAME_INLINE qboolean MeditateCheck( gentity_t * self )
 	{
 		anim = self->client->saber[0].meditateAnim;
 	}
-	else if ( self->client->saber[1].model 
-			&& self->client->saber[1].model[0]
+	else if ( self->client->saber[1].model[0]
 			&& self->client->saber[1].meditateAnim != -1 )
 	{
 		anim = self->client->saber[1].meditateAnim;
@@ -11767,7 +11762,7 @@ qboolean Jedi_DodgeEvasion( gentity_t *self, gentity_t *shooter, trace_t *tr, in
 		return qfalse;
 	}
 
-	if (self->client->ps.userInt3 |= (1 << FLAG_STASIS))
+	if (self->client->ps.userInt3 & (1 << FLAG_STASIS))
 	{
 		return qfalse;
 	}

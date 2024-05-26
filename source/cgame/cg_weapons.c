@@ -4747,8 +4747,7 @@ void *CG_G2WeaponInstance(centity_t *cent, int weapon)
 	}
 
 	//Try to return the custom saber instance if we can.
-	if (ci->saber[0].model && ci->saber[0].model[0] && ci->ghoul2Weapons &&
-		ci->ghoul2Weapons[0])
+	if (ci->saber[0].model[0] && ci->ghoul2Weapons[0])
 	{
 		return ci->ghoul2Weapons[0];
 	}

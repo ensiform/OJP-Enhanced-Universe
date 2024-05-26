@@ -472,8 +472,6 @@ typedef struct {
 
 } displayContextDef_t;
 
-#include "../namespace_begin.h"
-
 const char *String_Alloc(const char *p);
 void String_Init();
 void String_Report();
@@ -611,8 +609,6 @@ qboolean	trap_G2API_SetBoneIKState(void *ghoul2, int time, const char *boneName,
 qboolean	trap_G2API_IKMove(void *ghoul2, int time, sharedIKMoveParams_t *params);
 
 void		trap_G2API_GetSurfaceName(void *ghoul2, int surfNumber, int modelIndex, char *fillBuf);
-
-#include "../namespace_end.h"
 
 /*
 Ghoul2 Insert End

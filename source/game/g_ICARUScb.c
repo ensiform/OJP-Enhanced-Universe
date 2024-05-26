@@ -20,7 +20,6 @@
 #include "g_camera.h"
 //[/CoOp]
 
-#include "../namespace_begin.h"
 qboolean BG_SabersOff( playerState_t *ps );
 extern stringID_table_t WPTable[];
 extern stringID_table_t BSTable[];
@@ -28,7 +27,6 @@ extern stringID_table_t BSTable[];
 //[SuperDindon]
 extern stringID_table_t TeamTable[];
 //[/CoOp]
-#include "../namespace_end.h"
 
 //[CoOp]
 qboolean skippingCutscene = qfalse;  //toggle for cutscene skipping
@@ -75,9 +73,6 @@ int numDeclaredVariables = 0;
 //unless we're using cpp. But we need it for the interpreter stuff.
 //In any case, DO NOT modify this enum.
 
-//[Linux]
-//#ifndef __linux__
-//[/Linux]
 enum
 {
 	TK_EOF = -1,
@@ -92,9 +87,6 @@ enum
 	TK_IDENTIFIER,
 	TK_USERDEF,
 };
-//[Linux]
-//#endif
-//[/Linux]
 
 #include "../icarus/interpreter.h"
 
@@ -688,7 +680,7 @@ void Q3_Play( int taskID, int entID, const char *type, const char *name )
 	gentity_t *ent = &g_entities[entID];
 	
 	//[ROFF]
-	if ( !stricmp( type, "PLAY_ROFF" ) )
+	if ( !Q_stricmp( type, "PLAY_ROFF" ) )
 	{
 		// Try to load the requested ROFF
 		if ( G_LoadRoff( name ) )
@@ -823,7 +815,7 @@ void Blocked_Mover( gentity_t *ent, gentity_t *other )
 	// remove anything other than a client -- no longer the case
 
 	// don't remove security keys or goodie keys
-	if ( (other->s.eType == ET_ITEM) )
+	if ( other->s.eType == ET_ITEM )
 	{
 		// should we be doing anything special if a key blocks it... move it somehow..?
 	}
@@ -7855,7 +7847,7 @@ qboolean Q3_Set( int taskID, int entID, const char *type_name, const char *data 
 	case SET_DMG_BY_HEAVY_WEAP_ONLY:
 	//[CoOp]
 	//[SPPortCompleted]
-		if(!stricmp("true", ((char *)data)))
+		if(!Q_stricmp("true", ((char *)data)))
 		{
 			Q3_SetDmgByHeavyWeapOnly( entID, qtrue );
 		}
@@ -7871,7 +7863,7 @@ qboolean Q3_Set( int taskID, int entID, const char *type_name, const char *data 
 	case SET_SHIELDED:
 	//[CoOp]
 	//[SPPortCompleted]
-		if(!stricmp("true", ((char *)data)))
+		if(!Q_stricmp("true", ((char *)data)))
 		{
 			Q3_SetShielded( entID, qtrue );
 		}
@@ -7887,7 +7879,7 @@ qboolean Q3_Set( int taskID, int entID, const char *type_name, const char *data 
 	case SET_NO_GROUPS:
 	//[CoOp]
 	//[SPPortCompleted]
-		if(!stricmp("true", ((char *)data)))
+		if(!Q_stricmp("true", ((char *)data)))
 		{
 			Q3_SetNoGroups( entID, qtrue );
 		}
@@ -7913,11 +7905,11 @@ qboolean Q3_Set( int taskID, int entID, const char *type_name, const char *data 
 	//[CoOp]
 	//[SPPortCompleted]
 	case SET_SAFE_REMOVE:
-		if(!stricmp("true", ((char *)data)))
+		if(!Q_stricmp("true", ((char *)data)))
 		{
 			Q3_SetSafeRemove( entID, qtrue);
 		}
-		else if(!stricmp("false", ((char *)data)))
+		else if(!Q_stricmp("false", ((char *)data)))
 		{
 			Q3_SetSafeRemove( entID, qfalse);
 		}
@@ -8141,7 +8133,7 @@ qboolean Q3_Set( int taskID, int entID, const char *type_name, const char *data 
 			}
 	
 			//make sure the given ent changes gear if they are an NPC
-			if(ent->NPC && ent->NPC_type && stricmp( ent->NPC_type, "player" ) == 0 )
+			if(ent->NPC && ent->NPC_type && Q_stricmp( ent->NPC_type, "player" ) == 0 )
 			{
 				ToggleNPCWinterGear(ent);
 			}
@@ -8629,7 +8621,7 @@ void ToggleNPCWinterGear(gentity_t *ent)
 		if(skinname)
 		{//we're using a species player model, try to use their hoth clothes.
 			skinname++;
-			strstr(skinname, "|");
+			strstr(skinname, "|"); // Ensi: fixme return value
 			if(skinname)
 			{//this should always be true for good specie skins I think
 				strcpy( skinname, "torso_g1|lower_e1\0" );

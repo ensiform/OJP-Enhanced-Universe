@@ -612,7 +612,6 @@ void VectorRotate( vec3_t in, vec3_t matrix[3], vec3_t out )
 
 //============================================================================
 
-#if !idppc
 /*
 ** float q_rsqrt( float number )
 */
@@ -643,7 +642,6 @@ float Q_fabs( float f ) {
 	tmp &= 0x7FFFFFFF;
 	return * ( float * ) &tmp;
 }
-#endif
 
 //============================================================
 
@@ -1432,7 +1430,7 @@ void NormalToLatLong( const vec3_t normal, byte bytes[2] )
 // eg the typical tint = (rand() * 255) / 32768
 // becomes tint = irand(0, 255)
 
-static unsigned long	holdrand = 0x89abcdef;
+static unsigned int	holdrand = 0x89abcdef;
 
 void Rand_Init(int seed)
 {
@@ -1445,7 +1443,9 @@ float flrand(float min, float max)
 {
 	float	result;
 
-	holdrand = (holdrand * 214013L) + 2531011L;
+	assert((max - min) < 32768);
+
+	holdrand = (holdrand * 214013) + 2531011;
 	result = (float)(holdrand >> 17);						// 0 - 32767 range
 	result = ((result * (max - min)) / 32768.0F) + min;
 
@@ -1465,7 +1465,7 @@ int irand(int min, int max)
 	assert((max - min) < 32768);
 
 	max++;
-	holdrand = (holdrand * 214013L) + 2531011L;
+	holdrand = (holdrand * 214013) + 2531011;
 	result = holdrand >> 17;
 	result = ((result * (max - min)) >> 15) + min;
 	return(result);
@@ -1475,21 +1475,14 @@ int Q_irand(int value1, int value2)
 {
 	return irand(value1, value2);
 }
-//[Linux]
-//[VS2005]
-#if defined(_WIN32) && !defined(VS2005) && !defined(__GNUC__)
-//[/VS2005]
-//[/Linux]
-float powf ( float x, int y )
+float JKA_powf ( float x, int y )
 {
 	float r = x;
 	for ( y--; y>0; y-- )
 		r = r * r;
 	return r;
 }
-//[Linux]
-#endif
-//[/Linux]
+
 #ifdef Q3_VM 
 //rwwRMG - needed for HandleEntityAdjustment
 double fmod( double x, double y )

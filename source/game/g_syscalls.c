@@ -5,26 +5,11 @@
 // this file is only included when building a dll
 // g_syscalls.asm is included instead when building a qvm
 
-static int (QDECL *syscall)( int arg, ... ) = (int (QDECL *)( int, ...))-1;
+static dllSyscall_t syscall = (dllSyscall_t)-1;
 
-#include "../namespace_begin.h"
-//[Linux]
-/*
-#ifdef __linux__
-extern "C" {
-#endif
-*/
-//[Linux]
-void dllEntry( int (QDECL *syscallptr)( int arg,... ) ) {
+Q_EXPORT void dllEntry( dllSyscall_t syscallptr ) {
 	syscall = syscallptr;
 }
-//[Linux]
-/*
-#ifdef __linux__
-}
-#endif
-*/
-//[Linux]
 
 int PASSFLOAT( float x ) {
 	float	floatTemp;
@@ -1500,5 +1485,3 @@ void trap_Bot_CalculatePaths(int rmg)
 {
 	syscall(G_BOT_CALCULATEPATHS, rmg);
 }
-
-#include "../namespace_end.h"

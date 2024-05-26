@@ -447,7 +447,7 @@ static void CG_UpdateThirdPersonTargetDamp(void)
 		// Note that since there are a finite number of "practical" delta millisecond values possible, 
 		// the ratio should be initialized into a chart ultimately.
 		
-			ratio = powf(dampfactor, dtime);
+			ratio = JKA_powf(dampfactor, dtime);
 		
 		// This value is how much distance is "left" from the ideal.
 		VectorMA(cameraIdealTarget, -ratio, targetdiff, cameraCurTarget);
@@ -535,7 +535,7 @@ static void CG_UpdateThirdPersonCameraDamp(void)
 		// Note that since there are a finite number of "practical" delta millisecond values possible, 
 		// the ratio should be initialized into a chart ultimately.
 
-			ratio = powf(dampfactor, dtime);
+			ratio = JKA_powf(dampfactor, dtime);
 		// This value is how much distance is "left" from the ideal.
 		VectorMA(cameraIdealLoc, -ratio, locdiff, cameraCurLoc);
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2263,9 +2263,7 @@ CG_EmplacedView
 Keep view reasonably constrained in relation to gun -rww
 =================
 */
-#include "../namespace_begin.h"
 int BG_EmplacedView(vec3_t baseAngles, vec3_t angles, float *newYaw, float constraint);
-#include "../namespace_end.h"
 
 void CG_EmplacedView(vec3_t angles)
 {
@@ -2519,10 +2517,8 @@ Generates and draws a game scene and status information at the given time.
 static qboolean cg_rangedFogging = qfalse; //so we know if we should go back to normal fog
 float cg_linearFogOverride = 0.0f; //designer-specified override for linear fogging style
 
-#include "../namespace_begin.h"
 extern void BG_VehicleTurnRateForSpeed( Vehicle_t *pVeh, float speed, float *mPitchOverride, float *mYawOverride );
 extern qboolean PM_InKnockDown( playerState_t *ps );
-#include "../namespace_end.h"
 
 extern qboolean cgQueueLoad;
 extern void CG_ActualLoadDeferredPlayers( void );

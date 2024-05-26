@@ -38,7 +38,7 @@ typedef enum
 	TAUNT_MEDITATE,
 	TAUNT_FLOURISH,
 	TAUNT_GLOAT
-};
+} tauntTypes_t;
 /*
 ===================
 CG_PlaceString
@@ -102,73 +102,73 @@ qboolean CG_ThereIsAMaster(void);
 //[ImprovedObituary]
 stringID_table_t NPCClasses[] =
 {
-	"None?",				CLASS_NONE, //This probably shouldn't happen.
-	"AT-ST", 				CLASS_ATST,				
-	"Bartender",			CLASS_BARTENDER,
-	"Bespin Cop",			CLASS_BESPIN_COP,		
-	"Claw",					CLASS_CLAW,
-	"Commando",				CLASS_COMMANDO,
-	"Desann",				CLASS_DESANN,			
-	"Fish",					CLASS_FISH,
-	"Fliers",				CLASS_FLIER2,
-	"Galak",				CLASS_GALAK,
-	"Glider",				CLASS_GLIDER,
-	"Gonk Droid",			CLASS_GONK,				
-	"Gran",					CLASS_GRAN,
-	"Howler",				CLASS_HOWLER,
-	"Imperial Officer",		CLASS_IMPERIAL,
-	"Imperial Worker",		CLASS_IMPWORKER,
-	"Interrogator Droid",	CLASS_INTERROGATOR,		// droid 
-	"Jan",					CLASS_JAN,				
-	"Jedi",					CLASS_JEDI,				
-	"Kyle Katarn",			CLASS_KYLE,				
-	"Lando Calrissian",		CLASS_LANDO,			
-	"Lizard",				CLASS_LIZARD,
-	"Luke Skywalker",		CLASS_LUKE,				
-	"Mark 1 Droid",			CLASS_MARK1,			// droid
-	"Mark 2 Droid",			CLASS_MARK2,			// droid
-	"Galak's Mech Suit",	CLASS_GALAKMECH,		// droid
-	"Mine Monster",			CLASS_MINEMONSTER,
-	"Mon Mothma",			CLASS_MONMOTHA,			
-	"Morgan Katarn",		CLASS_MORGANKATARN,
-	"Mouse Droid",			CLASS_MOUSE,			// droid
-	"Murjj",				CLASS_MURJJ,
-	"Prisoner",				CLASS_PRISONER,
-	"Probe Droid",			CLASS_PROBE,			// droid
-	"Protocol Droid",		CLASS_PROTOCOL,			// droid
-	"R2D2",					CLASS_R2D2,				// droid
-	"R5D2",					CLASS_R5D2,				// droid
-	"Rebel Soldier",		CLASS_REBEL,
-	"Reborn",				CLASS_REBORN,
-	"Reelo Baruk",			CLASS_REELO,
-	"Droid Remote",			CLASS_REMOTE,
-	"Rodian",				CLASS_RODIAN,
-	"Seeker Droid",			CLASS_SEEKER,			// droid
-	"Sentry",				CLASS_SENTRY,
-	"Shadowtrooper",		CLASS_SHADOWTROOPER,
-	"Stormtrooper",			CLASS_STORMTROOPER,
-	"Squad Team",			CLASS_SQUADTEAM,			// droid
-	"Swamp?",				CLASS_SWAMP,
-	"Swamptrooper",			CLASS_SWAMPTROOPER,
-	"Tavion",				CLASS_TAVION,
-	"Trandoshan",			CLASS_TRANDOSHAN,
-	"Ugnaught",				CLASS_UGNAUGHT,
-	"Jawa",					CLASS_JAWA,
-	"Weequay",				CLASS_WEEQUAY,
-	"Boba Fett",			CLASS_BOBAFETT,
-	"Vehicle",				CLASS_VEHICLE,
-	"Fluffy the Rancor",	CLASS_RANCOR,
-	"Frosty the Wampa",		CLASS_WAMPA,
-	"Saboteur", 			CLASS_SABOTEUR,
-	"Sand Creature", 		CLASS_SAND_CREATURE,
-	"Alora", 				CLASS_ALORA,
-	"Rockettrooper", 		CLASS_ROCKETTROOPER,
-	"Saber Droid",			CLASS_SABER_DROID,
-	"Assassin Droid", 		CLASS_ASSASSIN_DROID,
-	"Hazard Trooper",		CLASS_HAZARD_TROOPER,
-	"Player's Standin", 	CLASS_PLAYER,
-	"Tusken Raider", 		CLASS_TUSKEN,
-	"",						-1,	//CLASS_NUM_CLASSES
+	{"None?",				CLASS_NONE}, //This probably shouldn't happen.
+	{"AT-ST", 				CLASS_ATST},				
+	{"Bartender",			CLASS_BARTENDER},
+	{"Bespin Cop",			CLASS_BESPIN_COP},		
+	{"Claw",					CLASS_CLAW},
+	{"Commando",				CLASS_COMMANDO},
+	{"Desann",				CLASS_DESANN},			
+	{"Fish",					CLASS_FISH},
+	{"Fliers",				CLASS_FLIER2},
+	{"Galak",				CLASS_GALAK},
+	{"Glider",				CLASS_GLIDER},
+	{"Gonk Droid",			CLASS_GONK},				
+	{"Gran",					CLASS_GRAN},
+	{"Howler",				CLASS_HOWLER},
+	{"Imperial Officer",		CLASS_IMPERIAL},
+	{"Imperial Worker",		CLASS_IMPWORKER},
+	{"Interrogator Droid",	CLASS_INTERROGATOR},		// droid 
+	{"Jan",					CLASS_JAN},				
+	{"Jedi",					CLASS_JEDI},				
+	{"Kyle Katarn",			CLASS_KYLE},				
+	{"Lando Calrissian",		CLASS_LANDO},			
+	{"Lizard",				CLASS_LIZARD},
+	{"Luke Skywalker",		CLASS_LUKE},				
+	{"Mark 1 Droid",			CLASS_MARK1},			// droid
+	{"Mark 2 Droid",			CLASS_MARK2},			// droid
+	{"Galak's Mech Suit",	CLASS_GALAKMECH},		// droid
+	{"Mine Monster",			CLASS_MINEMONSTER},
+	{"Mon Mothma",			CLASS_MONMOTHA},			
+	{"Morgan Katarn",		CLASS_MORGANKATARN},
+	{"Mouse Droid",			CLASS_MOUSE},			// droid
+	{"Murjj",				CLASS_MURJJ},
+	{"Prisoner",				CLASS_PRISONER},
+	{"Probe Droid",			CLASS_PROBE},			// droid
+	{"Protocol Droid",		CLASS_PROTOCOL},			// droid
+	{"R2D2",					CLASS_R2D2},				// droid
+	{"R5D2",					CLASS_R5D2},				// droid
+	{"Rebel Soldier",		CLASS_REBEL},
+	{"Reborn",				CLASS_REBORN},
+	{"Reelo Baruk",			CLASS_REELO},
+	{"Droid Remote",			CLASS_REMOTE},
+	{"Rodian",				CLASS_RODIAN},
+	{"Seeker Droid",			CLASS_SEEKER},			// droid
+	{"Sentry",				CLASS_SENTRY},
+	{"Shadowtrooper",		CLASS_SHADOWTROOPER},
+	{"Stormtrooper",			CLASS_STORMTROOPER},
+	{"Squad Team",			CLASS_SQUADTEAM},			// droid
+	{"Swamp?",				CLASS_SWAMP},
+	{"Swamptrooper",			CLASS_SWAMPTROOPER},
+	{"Tavion",				CLASS_TAVION},
+	{"Trandoshan",			CLASS_TRANDOSHAN},
+	{"Ugnaught",				CLASS_UGNAUGHT},
+	{"Jawa",					CLASS_JAWA},
+	{"Weequay",				CLASS_WEEQUAY},
+	{"Boba Fett",			CLASS_BOBAFETT},
+	{"Vehicle",				CLASS_VEHICLE},
+	{"Fluffy the Rancor",	CLASS_RANCOR},
+	{"Frosty the Wampa",		CLASS_WAMPA},
+	{"Saboteur", 			CLASS_SABOTEUR},
+	{"Sand Creature", 		CLASS_SAND_CREATURE},
+	{"Alora", 				CLASS_ALORA},
+	{"Rockettrooper", 		CLASS_ROCKETTROOPER},
+	{"Saber Droid",			CLASS_SABER_DROID},
+	{"Assassin Droid", 		CLASS_ASSASSIN_DROID},
+	{"Hazard Trooper",		CLASS_HAZARD_TROOPER},
+	{"Player's Standin", 	CLASS_PLAYER},
+	{"Tusken Raider", 		CLASS_TUSKEN},
+	{"",						-1},	//CLASS_NUM_CLASSES
 };
 //[/ImprovedObituary]
 
@@ -1217,9 +1217,7 @@ void CG_GetCTFMessageEvent(entityState_t *es)
 	CG_PrintCTFMessage(ci, teamName, es->eventParm);
 }
 
-#include "../namespace_begin.h"
 qboolean BG_InKnockDownOnly( int anim );
-#include "../namespace_end.h"
 
 void DoFall(centity_t *cent, entityState_t *es, int clientNum)
 {

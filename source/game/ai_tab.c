@@ -2445,7 +2445,7 @@ int TAB_GetNearestVisibleWP(bot_state_t *bs, vec3_t org, int ignore, int badwp)
 				|| (gWPArray[i]->flags & WPFLAG_FORCEPULL) )
 			{//boost the distance for these waypoints so that we will try to avoid using them
 				//if at all possible
-				flLen =+ 500;
+				flLen += 500;
 			}
 
 			if (flLen < bestdist && (g_RMG.integer || BotPVSCheck(org, gWPArray[i]->origin)) && OrgVisibleBox(org, mins, maxs, gWPArray[i]->origin, ignore))
@@ -3639,7 +3639,7 @@ int NumberofSiegeSpecificClass(int team, const char *classname)
 	{
 		gentity_t *ent = &g_entities[i];
 		if(ent && ent->client && ent->client->pers.connected == CON_CONNECTED
-			&& ent->client->sess.siegeClass && ent->client->sess.siegeDesiredTeam == team)
+			&& ent->client->sess.siegeClass[0] && ent->client->sess.siegeDesiredTeam == team)
 		{
 			if(strcmp(ent->client->sess.siegeClass, classname) == 0)
 			{
@@ -3662,7 +3662,7 @@ int NumberofSiegeBasicClass(int team, int BaseClass)
 	{
 		gentity_t *ent = &g_entities[i];
 		if(ent && ent->client && ent->client->pers.connected == CON_CONNECTED
-			&& ent->client->sess.siegeClass && ent->client->sess.sessionTeam == team)
+			&& ent->client->sess.siegeClass[0] && ent->client->sess.sessionTeam == team)
 		{
 			if(strcmp(ent->client->sess.siegeClass, holdClass->name) == 0)
 			{

@@ -1971,43 +1971,43 @@ void CG_CameraParse( void )
 	int CGroup[16];
 
 	o = CG_ConfigString( CS_CAMERA );
-	if(strncmp("enable", o, 6) == 0)
+	if(Q_stricmpn("enable", o, 6) == 0)
 	{
 		CGCam_Enable();
 	}
-	else if(strncmp("move", o, 4) == 0)
+	else if(Q_stricmpn("move", o, 4) == 0)
 	{
 		sscanf(o, "%*s %f %f %f %f", &vector_data[0], &vector_data[1], &vector_data[2], &float_data);
 		CGCam_Move(vector_data, float_data);
 	}
-	else if(strncmp("pan", o, 3) == 0)
+	else if(Q_stricmpn("pan", o, 3) == 0)
 	{
 		sscanf(o, "%*s %f %f %f %f %f %f %f", &vector_data[0], &vector_data[1], 
 			&vector_data[2], &vector2_data[0], &vector2_data[1], &vector2_data[2], &float_data);
 		CGCam_Pan(vector_data, vector2_data, float_data);
 	}
-	else if(strncmp("fade", o, 4) == 0)
+	else if(Q_stricmpn("fade", o, 4) == 0)
 	{
 		sscanf(o, "%*s %f %f %f %f %f %f %f %f %f", &color[0],
 		&color[1], &color[2], &color[3], &color2[0], &color2[1], &color2[2], &color2[3], 
 		&float_data);
 		CGCam_Fade(color, color2, float_data);
 	}
-	else if(strncmp("zoom", o, 4) == 0)
+	else if(Q_stricmpn("zoom", o, 4) == 0)
 	{
 		sscanf(o, "%*s %f %f", &float_data, &float2_data);
 		CGCam_Zoom(float_data, float2_data);
 	}
-	else if(strncmp("disable", o, 7) == 0)
+	else if(Q_stricmpn("disable", o, 7) == 0)
 	{
 		CGCam_Disable();
 	}
-	else if(strncmp("shake", o, 5) == 0)
+	else if(Q_stricmpn("shake", o, 5) == 0)
 	{
 		sscanf(o, "%*s %f %i", &float_data, &int_data);
 		CGCam_Shake(float_data, int_data);
 	}
-	else if(strncmp("follow", o, 6) == 0)
+	else if(Q_stricmpn("follow", o, 6) == 0)
 	{
 		sscanf(o, "%*s %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %f %f", &CGroup[0], 
 			&CGroup[1], &CGroup[2], &CGroup[3], &CGroup[4], &CGroup[5], &CGroup[6], 

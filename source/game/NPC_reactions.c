@@ -14,7 +14,6 @@ extern qboolean Jedi_WaitingAmbush( gentity_t *self );
 extern void Jedi_Ambush( gentity_t *self );
 extern qboolean NPC_SomeoneLookingAtMe(gentity_t *ent);
 
-#include "../namespace_begin.h"
 extern qboolean BG_SaberInSpecialAttack( int anim );
 extern qboolean PM_SpinningSaberAnim( int anim );
 extern qboolean PM_SpinningAnim( int anim );
@@ -23,7 +22,6 @@ extern qboolean BG_FlippingAnim( int anim );
 extern qboolean PM_RollingAnim( int anim );
 extern qboolean PM_InCartwheel( int anim );
 extern qboolean BG_CrouchAnim( int anim );
-#include "../namespace_end.h"
 
 extern int	teamLastEnemyTime[];
 extern int killPlayerTimer;
@@ -395,7 +393,7 @@ NPC_Pain
 */
 void NPC_Pain(gentity_t *self, gentity_t *attacker, int damage)
 {
-	team_t otherTeam = TEAM_FREE;
+	npcteam_t otherTeam = NPCTEAM_FREE;
 	int		voiceEvent = -1;
 	gentity_t *other = attacker;
 	int mod = gPainMOD;

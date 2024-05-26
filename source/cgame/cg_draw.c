@@ -162,8 +162,6 @@ char *showPowersName[] =
 };
 
 //Called from UI shared code. For now we'll just redirect to the normal anim load function.
-#include "../namespace_begin.h"
-
 
 int UI_ParseAnimationFile(const char *filename, animation_t *animset, qboolean isHumanoid) 
 {
@@ -183,8 +181,6 @@ int MenuFontToHandle(int iMenuFont)
 
 	return cgDC.Assets.qhMediumFont;
 }
-
-#include "../namespace_end.h"
 
 int CG_Text_Width(const char *text, float scale, int iMenuFont) 
 {
@@ -7367,97 +7363,97 @@ static void CG_DrawVote(void) {
 	memset(sParm, 0, sizeof(sParm));
 	//[/VoteSys]
 
-	if (strncmp(cgs.voteString, "map_restart", 11)==0)
+	if (Q_stricmpn(cgs.voteString, "map_restart", 11)==0)
 	{
 		//[VoteSys]
 		Q_strncpyz(sCmd, CG_GetStringEdString("MENUS", "RESTART_MAP"), sizeof(sCmd));
 		//trap_SP_GetStringTextString("MENUS_RESTART_MAP", sCmd, sizeof(sCmd) );
 		//[/VoteSys]
 	}
-	else if (strncmp(cgs.voteString, "vstr nextmap", 12)==0)
+	else if (Q_stricmpn(cgs.voteString, "vstr nextmap", 12)==0)
 	{
 		//[VoteSys]
 		Q_strncpyz(sCmd, CG_GetStringEdString("MENUS", "NEXT_MAP"), sizeof(sCmd));
 		//trap_SP_GetStringTextString("MENUS_NEXT_MAP", sCmd, sizeof(sCmd) );
 		//[/VoteSys]
 	}
-	else if (strncmp(cgs.voteString, "g_doWarmup", 10)==0)
+	else if (Q_stricmpn(cgs.voteString, "g_doWarmup", 10)==0)
 	{
 		//[VoteSys]
 		Q_strncpyz(sCmd, CG_GetStringEdString("MENUS", "WARMUP"), sizeof(sCmd));
 		//trap_SP_GetStringTextString("MENUS_WARMUP", sCmd, sizeof(sCmd) );
 		//[/VoteSys]
 	}
-	else if (strncmp(cgs.voteString, "g_gametype", 10)==0)
+	else if (Q_stricmpn(cgs.voteString, "g_gametype", 10)==0)
 	{
 		//[VoteSys]
 		Q_strncpyz(sCmd, CG_GetStringEdString("MENUS", "GAME_TYPE"), sizeof(sCmd));
 		//trap_SP_GetStringTextString("MENUS_GAME_TYPE", sCmd, sizeof(sCmd) );
 		//[/VoteSys]
-		if      ( stricmp("Free For All", cgs.voteString+11)==0 )
+		if      ( Q_stricmp("Free For All", cgs.voteString+11)==0 )
 		{
 			//[VoteSys]
 			Q_strncpyz(sParm, CG_GetStringEdString("MENUS", "FREE_FOR_ALL"), sizeof(sParm));
 			//sParm = CG_GetStringEdString("MENUS", "FREE_FOR_ALL");
 			//[/VoteSys]
 		}
-		else if ( stricmp("Duel", cgs.voteString+11)==0 )
+		else if ( Q_stricmp("Duel", cgs.voteString+11)==0 )
 		{
 			//[VoteSys]
 			Q_strncpyz(sParm, CG_GetStringEdString("MENUS", "DUEL"), sizeof(sParm));
 			//sParm = CG_GetStringEdString("MENUS", "DUEL");
 			//[/VoteSys]
 		}
-		else if ( stricmp("Jedi Master", cgs.voteString+11)==0 )
+		else if ( Q_stricmp("Jedi Master", cgs.voteString+11)==0 )
 		{
 			//[VoteSys]
 			Q_strncpyz(sParm, CG_GetStringEdString("OJP_MENUS", "JEDIMASTER"), sizeof(sParm));
 			//sParm = CG_GetStringEdString("OJP_MENUS", "JEDIMASTER");
 			//[/VoteSys]
 		}
-		else if ( stricmp("Holocron FFA", cgs.voteString+11)==0  )
+		else if ( Q_stricmp("Holocron FFA", cgs.voteString+11)==0  )
 		{
 			//[VoteSys]
 			Q_strncpyz(sParm, CG_GetStringEdString("MENUS", "HOLOCRON_FFA"), sizeof(sParm));
 			//sParm = CG_GetStringEdString("MENUS", "HOLOCRON_FFA");
 			//[/VoteSys]
 		}
-		else if ( stricmp("Power Duel", cgs.voteString+11)==0  )
+		else if ( Q_stricmp("Power Duel", cgs.voteString+11)==0  )
 		{
 			//[VoteSys]
 			Q_strncpyz(sParm, CG_GetStringEdString("MENUS", "POWERDUEL"), sizeof(sParm));
 			//sParm = CG_GetStringEdString("MENUS", "POWERDUEL");
 			//[/VoteSys]
 		}
-		else if ( stricmp("Team FFA", cgs.voteString+11)==0  )
+		else if ( Q_stricmp("Team FFA", cgs.voteString+11)==0  )
 		{
 			//[VoteSys]
 			Q_strncpyz(sParm, CG_GetStringEdString("MENUS", "TEAM_FFA"), sizeof(sParm));
 			//sParm = CG_GetStringEdString("MENUS", "TEAM_FFA");
 			//[/VoteSys]
 		}
-		else if ( stricmp("Siege", cgs.voteString+11)==0  )
+		else if ( Q_stricmp("Siege", cgs.voteString+11)==0  )
 		{
 			//[VoteSys]
 			Q_strncpyz(sParm, CG_GetStringEdString("MENUS", "SIEGE"), sizeof(sParm));
 			//sParm = CG_GetStringEdString("MENUS", "SIEGE");
 			//[/VoteSys]
 		}
-		else if ( stricmp("Capture the Flag", cgs.voteString+11)==0  )
+		else if ( Q_stricmp("Capture the Flag", cgs.voteString+11)==0  )
 		{
 			//[VoteSys]
 			Q_strncpyz(sParm, CG_GetStringEdString("MENUS", "CAPTURE_THE_FLAG"), sizeof(sParm));
 			//sParm = CG_GetStringEdString("MENUS", "CAPTURE_THE_FLAG");
 			//[/VoteSys]
 		}
-		else if ( stricmp("Capture the Ysalamiri", cgs.voteString+11)==0  )
+		else if ( Q_stricmp("Capture the Ysalamiri", cgs.voteString+11)==0  )
 		{
 			Q_strncpyz(sParm, CG_GetStringEdString("MENUS", "CAPTURE_THE_YSALIMARI"), sizeof(sParm));
 			//sParm = CG_GetStringEdString("MENUS", "CAPTURE_THE_YSALIMARI");
 		}
 		//[CoOp]
 		//[VoteSys]
-		else if ( stricmp("Single Player", cgs.voteString+11)==0 )
+		else if ( Q_stricmp("Single Player", cgs.voteString+11)==0 )
 		{
 			
 			Q_strncpyz(sParm, CG_GetStringEdString("OJP_MENUS", "COOP"), sizeof(sParm));
@@ -7473,7 +7469,7 @@ static void CG_DrawVote(void) {
 		}
 		//[/VoteSys]
 	}
-	else if (strncmp(cgs.voteString, "map", 3)==0)
+	else if (Q_stricmpn(cgs.voteString, "map", 3)==0)
 	{
 		//[VoteSys]
 		Q_strncpyz(sCmd, CG_GetStringEdString("MENUS", "NEW_MAP"), sizeof(sCmd));
@@ -7483,7 +7479,7 @@ static void CG_DrawVote(void) {
 		//[/VoteSys]
 	}
 
-	else if (strncmp(cgs.voteString, "kick", 4)==0)
+	else if (Q_stricmpn(cgs.voteString, "kick", 4)==0)
 	{
 		//[VoteSys]
 		Q_strncpyz(sCmd, CG_GetStringEdString("MENUS", "KICK_PLAYER"), sizeof(sCmd));
@@ -7493,17 +7489,17 @@ static void CG_DrawVote(void) {
 		//[/VoteSys]
 	}
 	//[VoteSys]
-	else if (strncmp(cgs.voteString, "timelimit", 9)==0)
+	else if (Q_stricmpn(cgs.voteString, "timelimit", 9)==0)
 	{
 		Q_strncpyz(sCmd, CG_GetStringEdString("MP_INGAME", "TIMELIMIT"), sizeof(sCmd));
 		Q_strncpyz(sParm, cgs.voteString+10, sizeof(sParm));
 	}
-	else if (strncmp(cgs.voteString, "fraglimit", 9)==0)
+	else if (Q_stricmpn(cgs.voteString, "fraglimit", 9)==0)
 	{
 		Q_strncpyz(sCmd, CG_GetStringEdString("MP_INGAME", "FRAGLIMIT"), sizeof(sCmd));
 		Q_strncpyz(sParm, cgs.voteString+10, sizeof(sParm));
 	}
-	else if (strncmp(cgs.voteString, "capturelimit", 12)==0)
+	else if (Q_stricmpn(cgs.voteString, "capturelimit", 12)==0)
 	{
 		Q_strncpyz(sCmd, CG_GetStringEdString("MP_INGAME", "CAPTURELIMIT"), sizeof(sCmd));
 		Q_strncpyz(sParm, cgs.voteString+13, sizeof(sParm));
@@ -8547,7 +8543,7 @@ void CG_ChatBox_ArrayInsert(chatBoxItem_t **array, int insPoint, int maxNum, cha
 }
 
 //go through all the chat strings and draw them if they are not yet expired
-static CGAME_INLINE void CG_ChatBox_DrawStrings(void)
+CGAME_INLINE void CG_ChatBox_DrawStrings(void)
 {
 	chatBoxItem_t *drawThese[MAX_CHATBOX_ITEMS];
 	int numToDraw = 0;

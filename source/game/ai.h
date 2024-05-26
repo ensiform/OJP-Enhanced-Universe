@@ -105,7 +105,7 @@ typedef struct AIGroupInfo_s
 {
 	int			numGroup;
 	qboolean	processed;
-	team_t		team;
+	npcteam_t		team;
 	gentity_t	*enemy;
 	int			enemyWP;
 	int			speechDebounceTime;
@@ -122,13 +122,13 @@ typedef struct AIGroupInfo_s
 	AIGroupMember_t member[ MAX_GROUP_MEMBERS ];
 } AIGroupInfo_t;
 
-int	AI_GetGroupSize( vec3_t origin, int radius, team_t playerTeam, gentity_t *avoid );
+int	AI_GetGroupSize( vec3_t origin, int radius, npcteam_t playerTeam, gentity_t *avoid );
 int AI_GetGroupSize2( gentity_t *ent, int radius );
 
 void AI_GetGroup( gentity_t *self );
 
 qboolean AI_CheckEnemyCollision( gentity_t *ent, qboolean takeEnemy );
-gentity_t *AI_DistributeAttack( gentity_t *attacker, gentity_t *enemy, team_t team, int threshold );
+gentity_t *AI_DistributeAttack( gentity_t *attacker, gentity_t *enemy, npcteam_t team, int threshold );
 
 //[CoOp]
 gentity_t *FindClosestPlayer(vec3_t position, int enemyTeam);

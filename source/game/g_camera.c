@@ -276,7 +276,7 @@ void GCam_FollowUpdate ( void )
 		if ( (from->s.eType == ET_PLAYER 
 			|| from->s.eType == ET_NPC 
 			|| from->s.number < MAX_CLIENTS)
-			&& client_camera.cameraGroupTag && client_camera.cameraGroupTag[0] )
+			&& client_camera.cameraGroupTag[0] )
 		{
 			int newBolt = trap_G2API_AddBolt( &from->ghoul2, 0, client_camera.cameraGroupTag );
 			if ( newBolt != -1 )

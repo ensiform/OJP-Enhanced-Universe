@@ -865,7 +865,7 @@ NPC_WeaponsForTeam
 -------------------------
 */
 
-int NPC_WeaponsForTeam( team_t team, int spawnflags, const char *NPC_type )
+int NPC_WeaponsForTeam( npcteam_t team, int spawnflags, const char *NPC_type )
 {
 	//*** not sure how to handle this, should I pass in class instead of team and go from there? - dmv
 	switch(team)
@@ -1784,12 +1784,10 @@ void NPC_DefaultScriptFlags( gentity_t *ent )
 NPC_Spawn_Go
 -------------------------
 */
-#include "../namespace_begin.h"
 extern void G_CreateAnimalNPC( Vehicle_t **pVeh, const char *strAnimalType );
 extern void G_CreateSpeederNPC( Vehicle_t **pVeh, const char *strType );
 extern void G_CreateWalkerNPC( Vehicle_t **pVeh, const char *strAnimalType );
 extern void G_CreateFighterNPC( Vehicle_t **pVeh, const char *strType );
-#include "../namespace_end.h"
 
 //[CoOp]
 #define TURN_ON				0x00000000

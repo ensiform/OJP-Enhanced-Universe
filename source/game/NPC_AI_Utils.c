@@ -20,7 +20,7 @@ AI_GetGroupSize
 -------------------------
 */
 
-int	AI_GetGroupSize( vec3_t origin, int radius, team_t playerTeam, gentity_t *avoid )
+int	AI_GetGroupSize( vec3_t origin, int radius, npcteam_t playerTeam, gentity_t *avoid )
 {
 	int			radiusEnts[ MAX_RADIUS_ENTS ];
 	gentity_t	*check;
@@ -1077,7 +1077,7 @@ AI_DistributeAttack
 
 #define	MAX_RADIUS_ENTS		128
 
-gentity_t *AI_DistributeAttack( gentity_t *attacker, gentity_t *enemy, team_t team, int threshold )
+gentity_t *AI_DistributeAttack( gentity_t *attacker, gentity_t *enemy, npcteam_t team, int threshold )
 {
 	int			radiusEnts[ MAX_RADIUS_ENTS ];
 	gentity_t	*check;
@@ -1132,7 +1132,7 @@ gentity_t *AI_DistributeAttack( gentity_t *attacker, gentity_t *enemy, team_t te
 			continue;
 
 		//Skip the requested avoid ent if present
-		if ( ( check == enemy ) )
+		if ( check == enemy )
 			continue;
 
 		//Must be on the same team

@@ -13,7 +13,6 @@ extern stringID_table_t SaberMoveTable[];
 #endif
 //[/SaberLockSys]
 
-#include "../namespace_begin.h"
 extern qboolean BG_SabersOff( playerState_t *ps );
 saberInfo_t *BG_MySaber( int clientNum, int saberNum );
 
@@ -1031,9 +1030,6 @@ int PM_SaberLockWinAnim( qboolean victory, qboolean superBreak )
 	return winAnim;
 }
 
-// Need to avoid nesting namespaces!
-#include "../namespace_end.h"
-
 //[SaberSys]
 extern void PM_DoPunch(void);
 //[/SaberSys]
@@ -1052,7 +1048,6 @@ extern gentity_t g_entities[];
 #include "../cgame/cg_local.h" //ahahahahhahahaha@$!$!
 
 #endif
-#include "../namespace_begin.h"
 
 int PM_SaberLockLoseAnim( playerState_t *genemy, qboolean victory, qboolean superBreak )
 { 
@@ -5615,8 +5610,7 @@ saberInfo_t *BG_MySaber( int clientNum, int saberNum )
 	gentity_t *ent = &g_entities[clientNum];
 	if ( ent->inuse && ent->client )
 	{
-		if ( !ent->client->saber[saberNum].model 
-			|| !ent->client->saber[saberNum].model[0] )
+		if ( !ent->client->saber[saberNum].model[0] )
 		{ //don't have saber anymore!
 			return NULL;
 		}
@@ -5639,8 +5633,7 @@ saberInfo_t *BG_MySaber( int clientNum, int saberNum )
 	if ( ci 
 		&& ci->infoValid )
 	{
-		if ( !ci->saber[saberNum].model 
-			|| !ci->saber[saberNum].model[0] )
+		if ( !ci->saber[saberNum].model[0] )
 		{ //don't have sabers anymore!
 			return NULL;
 		}
@@ -5650,8 +5643,6 @@ saberInfo_t *BG_MySaber( int clientNum, int saberNum )
 
 	return NULL;
 }
-
-#include "../namespace_end.h"
 
 
 //[MELEE]

@@ -4,10 +4,9 @@
 // cg_syscalls.asm is included instead when building a qvm
 #include "cg_local.h"
 
-static int (QDECL *syscall)( int arg, ... ) = (int (QDECL *)( int, ...))-1;
+static dllSyscall_t syscall = (dllSyscall_t)-1;
 
-#include "../namespace_begin.h"
-void dllEntry( int (QDECL  *syscallptr)( int arg,... ) ) {
+Q_EXPORT void dllEntry( dllSyscall_t syscallptr ) {
 	syscall = syscallptr;
 }
 
@@ -1122,5 +1121,3 @@ void trap_WE_AddWeatherZone( const vec3_t mins, const vec3_t maxs )
 /*
 Ghoul2 Insert End
 */
-
-#include "../namespace_end.h"

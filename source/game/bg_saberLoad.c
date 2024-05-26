@@ -7,27 +7,21 @@
 extern stringID_table_t animTable [MAX_ANIMATIONS+1];
 
 //Could use strap stuff but I don't particularly care at the moment anyway.
-#include "../namespace_begin.h"
 extern int	trap_FS_FOpenFile( const char *qpath, fileHandle_t *f, fsMode_t mode );
 extern void	trap_FS_Read( void *buffer, int len, fileHandle_t f );
 extern void	trap_FS_Write( const void *buffer, int len, fileHandle_t f );
 extern void	trap_FS_FCloseFile( fileHandle_t f );
 extern int	trap_FS_GetFileList(  const char *path, const char *extension, char *listbuf, int bufsize );
 extern qhandle_t trap_R_RegisterSkin( const char *name );
-#include "../namespace_end.h"
 
 
 #ifdef QAGAME
 extern int G_SoundIndex( const char *name );
 #elif defined CGAME
-#include "../namespace_begin.h"
 sfxHandle_t trap_S_RegisterSound( const char *sample);
 qhandle_t	trap_R_RegisterShader( const char *name );			// returns all white if not found
 int	trap_FX_RegisterEffect(const char *file);
-#include "../namespace_end.h"
 #endif
-
-#include "../namespace_begin.h"
 
 int BG_SoundIndex(char *sound)
 {
@@ -385,7 +379,7 @@ qboolean WP_UseFirstValidSaberStyle( saberInfo_t *saber1, saberInfo_t *saber2, i
 	qboolean dualSabers = qfalse;
 	int	validStyles = 0, styleNum;
 
-	if ( saber2 && saber2->model && saber2->model[0] )
+	if ( saber2 && saber2->model[0] )
 	{
 		dualSabers = qtrue;
 	}
@@ -410,7 +404,6 @@ qboolean WP_UseFirstValidSaberStyle( saberInfo_t *saber1, saberInfo_t *saber2, i
 	{
 		saber2Active = qfalse;
 		if ( !saber1
-			|| !saber1->model
 			|| !saber1->model[0] )
 		{
 			saber1Active = qfalse;
@@ -447,7 +440,6 @@ qboolean WP_UseFirstValidSaberStyle( saberInfo_t *saber1, saberInfo_t *saber2, i
 
 	if ( saber1Active
 		&& saber1
-		&& saber1->model
 		&& saber1->model[0]
 		&& saber1->stylesForbidden )
 	{
@@ -3152,5 +3144,3 @@ void BG_SI_DeactivateTrail ( saberInfo_t *saber, float duration )
 		BG_BLADE_DeactivateTrail(&saber->blade[i], duration);
 	}
 }
-
-#include "../namespace_end.h"

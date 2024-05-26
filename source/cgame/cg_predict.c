@@ -15,7 +15,7 @@ static	int			cg_numTriggerEntities;
 static	centity_t	*cg_triggerEntities[MAX_ENTITIES_IN_SNAPSHOT];
 
 //is this client piloting this veh?
-static CGAME_INLINE qboolean CG_Piloting(int vehNum)
+CGAME_INLINE qboolean CG_Piloting(int vehNum)
 {
 	centity_t *veh;
 
@@ -140,7 +140,7 @@ void CG_BuildSolidList( void ) {
 	}
 }
 
-static CGAME_INLINE qboolean CG_VehicleClipCheck(centity_t *ignored, trace_t *trace)
+CGAME_INLINE qboolean CG_VehicleClipCheck(centity_t *ignored, trace_t *trace)
 {
 	if (!trace || trace->entityNum < 0 || trace->entityNum >= ENTITYNUM_WORLD)
 	{ //it's alright then
@@ -208,11 +208,9 @@ CG_ClipMoveToEntities
 
 ====================
 */
-#include "../namespace_begin.h"
 extern void BG_VehicleAdjustBBoxForOrientation( Vehicle_t *veh, vec3_t origin, vec3_t mins, vec3_t maxs,
 										int clientNum, int tracemask,
 										void (*localTrace)(trace_t *results, const vec3_t start, const vec3_t mins, const vec3_t maxs, const vec3_t end, int passEntityNum, int contentMask)); // bg_pmove.c
-#include "../namespace_end.h"
 static void CG_ClipMoveToEntities ( const vec3_t start, const vec3_t mins, const vec3_t maxs, const vec3_t end,
 							int skipNumber, int mask, trace_t *tr, qboolean g2Check ) {
 	int			i, x, zd, zu;

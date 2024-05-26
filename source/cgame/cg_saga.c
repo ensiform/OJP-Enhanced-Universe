@@ -262,7 +262,7 @@ void CG_InitSiegeMode(void)
 
 	Com_sprintf(levelname, sizeof(levelname), "%s.siege\0", levelname); 
 
-	if (!levelname || !levelname[0])
+	if (!levelname[0])
 	{
 		goto failure;
 	}
@@ -521,7 +521,7 @@ failure:
 	siege_valid = 0;
 }
 
-static char CGAME_INLINE *CG_SiegeObjectiveBuffer(int team, int objective)
+CGAME_INLINE char *CG_SiegeObjectiveBuffer(int team, int objective)
 {
 	static char buf[8192];
 	char teamstr[1024];
@@ -1159,7 +1159,7 @@ void CG_ParseSiegeExtendedDataEntry(const char *conStr)
 		{
 			s[i] = *str;
 			i++;
-			*str++;
+			str++;
 		}
 		s[i] = 0;
         switch (argParses)

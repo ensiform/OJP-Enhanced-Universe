@@ -46,8 +46,6 @@ extern void UI_CacheSaberGlowGraphics( void );
 
 #endif //
 
-#include "../namespace_begin.h"
-
 #ifdef CGAME
 
 extern int trap_Key_GetCatcher( void ) ;
@@ -117,8 +115,8 @@ typedef struct  itemFlagsDef_s {
 }	itemFlagsDef_t;
 
 itemFlagsDef_t itemFlags [] = {
-"WINDOW_INACTIVE",		WINDOW_INACTIVE,
-NULL,					(int) NULL
+{"WINDOW_INACTIVE",		WINDOW_INACTIVE},
+{NULL,					0}
 };
 
 char *styles [] = {
@@ -5447,9 +5445,7 @@ void UI_ScaleModelAxis(refEntity_t	*ent)
 }
 
 #ifndef CGAME
-#include "../namespace_end.h"	// Yes, these are inverted. The whole file is in the namespace.
 extern void UI_SaberAttachToChar( itemDef_t *item );
-#include "../namespace_begin.h"
 #endif
 
 void Item_Model_Paint(itemDef_t *item) 
@@ -7380,7 +7376,7 @@ qboolean ItemParse_asset_model( itemDef_t *item, int handle ) {
 	temp = token.string;
 
 #ifndef CGAME
-	if (!stricmp(token.string,"ui_char_model") )
+	if (!Q_stricmp(token.string,"ui_char_model") )
 	{
 		char modelPath[MAX_QPATH];
 		char ui_char_model[MAX_QPATH];
@@ -8401,7 +8397,7 @@ qboolean ItemParse_cvarStrList( itemDef_t *item, int handle ) {
 		}
 
 		//a normal StringAlloc ptr
-		if ((int)psString > 0)	
+		if (psString)	
 		{
 			if (*psString == '}') {
 				return qtrue;
@@ -8464,7 +8460,7 @@ qboolean ItemParse_cvarFloatList( itemDef_t *item, int handle )
 		}
 			
 		//a normal StringAlloc ptr
-		if ((int)string > 0)	
+		if (string)	
 		{
 			if (*string == '}') 
 			{
@@ -9758,5 +9754,3 @@ static qboolean Menu_OverActiveItem(menuDef_t *menu, float x, float y) {
 	}
 	return qfalse;
 }
-
-#include "../namespace_end.h"

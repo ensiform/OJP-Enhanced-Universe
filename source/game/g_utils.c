@@ -476,9 +476,7 @@ Finally reworked PM_SetAnim to allow non-pmove calls, so we take our
 local anim index into account and make the call -rww
 =============
 */
-#include "../namespace_begin.h"
 void BG_SetAnim(playerState_t *ps, animation_t *animations, int setAnimParts,int anim,int setAnimFlags, int blendTime);
-#include "../namespace_end.h"
 
 void G_SetAnim(gentity_t *ent, usercmd_t *ucmd, int setAnimParts, int anim, int setAnimFlags, int blendTime)
 {
@@ -808,8 +806,8 @@ gentity_t *FindRemoveAbleGent(void)
 	e = &g_entities[MAX_CLIENTS];
 	for( i=MAX_CLIENTS; i <level.num_entities;i++)
 	{
-		if(!stricmp(e->classname,"item_shield") || !stricmp(e->classname,"item_seeker") 
-			|| !stricmp(e->classname,"item_binoculars"))
+		if(!Q_stricmp(e->classname,"item_shield") || !Q_stricmp(e->classname,"item_seeker") 
+			|| !Q_stricmp(e->classname,"item_binoculars"))
 		{
 			G_Printf("Warning, removing instant medpack to prevent entity overflow.\n");
 			return e;

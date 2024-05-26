@@ -23,7 +23,6 @@ extern qboolean TryGrapple(gentity_t *ent); //g_cmds.c
 extern void trap_FX_PlayEffect( const char *file, vec3_t org, vec3_t fwd, int vol, int rad );
 #endif
 
-#include "../namespace_begin.h"
 extern qboolean BG_FullBodyTauntAnim( int anim );
 extern float PM_WalkableGroundDistance(void);
 extern qboolean PM_GroundSlideOkay( float zNormal );
@@ -481,9 +480,6 @@ void PM_pitch_roll_for_slope( bgEntity_t *forwhom, vec3_t pass_slope, vec3_t sto
 		if ( trace.fraction >= 1.0 )
 			return;
 
-		if( !( &trace.plane ) )
-			return;
-
 		if ( VectorCompare( vec3_origin, trace.plane.normal ) )
 			return;
 
@@ -876,9 +872,6 @@ void BG_VehicleTurnRateForSpeed( Vehicle_t *pVeh, float speed, float *mPitchOver
 	}
 }
 
-#include "../namespace_end.h"
-
-// Following couple things don't belong in the DLL namespace!
 #ifdef QAGAME
 //[Linux]//[Mac]
 #if _WIN32 && !defined(__GNUC__)
@@ -887,9 +880,6 @@ typedef struct gentity_s gentity_t;
 //[/Linux]//[/Mac]
 gentity_t *G_PlayEffectID(const int fxID, vec3_t org, vec3_t ang);
 #endif
-
-
-#include "../namespace_begin.h"
 
 static void PM_GroundTraceMissed( void );
 void PM_HoverTrace( void )
@@ -2430,7 +2420,7 @@ int NumberOfWeapons(void)
 		numWeaps++;
 	if(pm->ps->stats[STAT_WEAPONS] & (1 << WP_BRYAR_OLD))
 		numWeaps++;
-		return numWeaps;
+	return numWeaps;
 }
 
 int JumpHeightDeduction(void)
@@ -10046,7 +10036,7 @@ static void PM_Weapon( void )
 					#endif
 					//[/Reload]
 
-					if (( pm->ps->weapon == WP_BRYAR_PISTOL )) 
+					if ( pm->ps->weapon == WP_BRYAR_PISTOL ) 
 					{
 						PM_AddEventWithParm( EV_NOAMMO, WP_NUM_WEAPONS+pm->ps->weapon );
 
@@ -10063,7 +10053,7 @@ static void PM_Weapon( void )
 						}
 					}
 					return;
-					if (( pm->ps->weapon == WP_BRYAR_OLD )) 
+					if ( pm->ps->weapon == WP_BRYAR_OLD ) 
 					{
 						PM_AddEventWithParm( EV_NOAMMO, WP_NUM_WEAPONS+pm->ps->weapon );
 
@@ -10080,7 +10070,7 @@ static void PM_Weapon( void )
 						}
 					}
 					return;
-					if (( pm->ps->weapon == WP_STUN_BATON )) 
+					if ( pm->ps->weapon == WP_STUN_BATON ) 
 					{
 						PM_AddEventWithParm( EV_NOAMMO, WP_NUM_WEAPONS+pm->ps->weapon );
 
@@ -11517,8 +11507,6 @@ static void PM_DropTimers( void ) {
 // which includes files that are also compiled in SP. We do need to make
 // sure we only get one copy in the linker, though.
 
-#include "../namespace_end.h"
-
 extern	vmCvar_t	bg_fighterAltControl;
 qboolean BG_UnrestrainedPitchRoll( playerState_t *ps, Vehicle_t *pVeh )
 {
@@ -11535,7 +11523,6 @@ qboolean BG_UnrestrainedPitchRoll( playerState_t *ps, Vehicle_t *pVeh )
 	}
 	return qfalse;
 }
-#include "../namespace_begin.h"
 
 /*
 ================
@@ -13783,7 +13770,7 @@ static qboolean PM_AdjustAnglesForDualJumpAttack( playerState_t *ps, usercmd_t *
 #ifdef __LCC__
 static void PM_CmdForSaberMoves(usercmd_t *ucmd)
 #else
-static ID_INLINE void PM_CmdForSaberMoves(usercmd_t *ucmd)
+ID_INLINE void PM_CmdForSaberMoves(usercmd_t *ucmd)
 #endif
 {//racc - basically, this function does all the movement and viewlocks for the special
 	//saber moves.
@@ -16393,5 +16380,3 @@ qboolean PM_GettingUpFromKnockDown( float standheight, float crouchheight )
 	return qfalse;
 }
 //[/KnockdownSys]
-
-#include "../namespace_end.h"

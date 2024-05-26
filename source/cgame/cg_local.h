@@ -1177,7 +1177,7 @@ typedef enum
 	CHUNK_CRATE2,
 	CHUNK_WHITE_METAL,
 	NUM_CHUNK_TYPES
-};
+} chunkTypes_t;
 #define NUM_CHUNK_MODELS	4
 
 // all of the model, shader, and sound references that are
@@ -2088,10 +2088,8 @@ extern	vmCvar_t		cg_smoothClients;
 extern	vmCvar_t		ojp_sabermelee;
 //[/MELEE]
 
-#include "../namespace_begin.h"
 extern	vmCvar_t		pmove_fixed;
 extern	vmCvar_t		pmove_msec;
-#include "../namespace_end.h"
 
 //extern	vmCvar_t		cg_pmove_fixed;
 extern	vmCvar_t		cg_cameraOrbit;
@@ -2503,8 +2501,6 @@ void CG_AdjustEyePos (const char *modelName);
 // These functions are how the cgame communicates with the main game system
 //
 
-#include "../namespace_begin.h"
-
 // print message on the local console
 void		trap_Print( const char *fmt );
 
@@ -2730,16 +2726,12 @@ void		BG_CycleInven(playerState_t *ps, int direction);
 int			BG_ProperForceIndex(int power);
 void		BG_CycleForce(playerState_t *ps, int direction);
 
-#include "../namespace_end.h"
-
 
 typedef enum {
   SYSTEM_PRINT,
   CHAT_PRINT,
   TEAMCHAT_PRINT
 } q3print_t; // bk001201 - warning: useless keyword or type name in empty declaration
-
-#include "../namespace_begin.h"
 
 int trap_CIN_PlayCinematic( const char *arg0, int xpos, int ypos, int width, int height, int bits);
 e_status trap_CIN_StopCinematic(int handle);
@@ -2799,8 +2791,6 @@ qboolean	trap_ROFF_Purge_Ent( int entID );
 //rww - dynamic vm memory allocation!
 void	trap_TrueMalloc(void **ptr, int size);
 void	trap_TrueFree(void **ptr);
-
-#include "../namespace_end.h"
 
 void	CG_ClearParticles (void);
 void	CG_AddParticles (void);
@@ -2872,8 +2862,6 @@ void FX_BryarOldHitWall( vec3_t origin, vec3_t normal );
 void FX_BryarOldAltHitWall( vec3_t origin, vec3_t normal, int power );
 void FX_BryarOldHitPlayer( vec3_t origin, vec3_t normal, qboolean humanoid );
 void FX_BryarOldAltHitPlayer( vec3_t origin, vec3_t normal, qboolean humanoid );
-
-#include "../namespace_begin.h"
 
 void		trap_G2API_CollisionDetect		( CollisionRecord_t *collRecMap, void* ghoul2, const vec3_t angles, const vec3_t position,int frameNumber, int entNum, const vec3_t rayStart, const vec3_t rayEnd, const vec3_t scale, int traceFlags, int useLod, float fRadius );
 void		trap_G2API_CollisionDetectCache		( CollisionRecord_t *collRecMap, void* ghoul2, const vec3_t angles, const vec3_t position,int frameNumber, int entNum, const vec3_t rayStart, const vec3_t rayEnd, const vec3_t scale, int traceFlags, int useLod, float fRadius );
@@ -2960,8 +2948,6 @@ void		trap_G2API_CleanEntAttachments(void);
 qboolean	trap_G2API_OverrideServer(void *serverInstance);
 
 void		trap_G2API_GetSurfaceName(void *ghoul2, int surfNumber, int modelIndex, char *fillBuf);
-
-#include "../namespace_end.h"
 
 void		CG_Init_CG(void);
 void		CG_Init_CGents(void);

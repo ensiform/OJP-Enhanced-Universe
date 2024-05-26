@@ -36,20 +36,14 @@
 #define FORCE_DESTRUCTION_RADIUS 512
 #define MAX_DRAIN_DISTANCE 512
 
-//[Linux]
-#ifndef __linux__
 typedef enum
-#else
-enum
-#endif
-//[/Linux]
 {
 	FJ_FORWARD,
 	FJ_BACKWARD,
 	FJ_RIGHT,
 	FJ_LEFT,
 	FJ_UP
-};
+} forceJumpType_t;
 
 typedef enum
 {
@@ -76,9 +70,7 @@ extern vmCvar_t g_MaxHolocronCarry;
 #define SABERMAXS_Z 3.0f//8.0f
 #define	SABER_MIN_THROW_DIST	50.0f
 
-#include "../namespace_begin.h"
 extern int forcePowerNeeded[NUM_FORCE_POWER_LEVELS][NUM_FORCE_POWERS];
 extern float forceJumpHeight[NUM_FORCE_POWER_LEVELS];
 extern float forceJumpStrength[NUM_FORCE_POWER_LEVELS];
 extern float forcePushPullRadius[NUM_FORCE_POWER_LEVELS];
-#include "../namespace_end.h"

@@ -226,10 +226,8 @@ vmCvar_t	g_debugRight;
 vmCvar_t	g_debugUp;
 vmCvar_t	g_smoothClients;
 
-#include "../namespace_begin.h"
 vmCvar_t	pmove_fixed;
 vmCvar_t	pmove_msec;
-#include "../namespace_end.h"
 
 vmCvar_t	g_listEntity;
 //vmCvar_t	g_redteam;
@@ -862,14 +860,6 @@ This is the only way control passes into the module.
 This must be the very first function compiled into the .q3vm file
 ================
 */
-#include "../namespace_begin.h"
-//[Linux]
-/*
-#ifdef __linux__
-extern "C" {
-#endif
-*/
-//[/Linux]
 Q_EXPORT intptr_t vmMain( int command, intptr_t arg0, intptr_t arg1, intptr_t arg2, intptr_t arg3, intptr_t arg4, intptr_t arg5, intptr_t arg6, intptr_t arg7, intptr_t arg8, intptr_t arg9, intptr_t arg10, intptr_t arg11  ) {
 	switch ( command ) {
 	case GAME_INIT:
@@ -1059,14 +1049,6 @@ Q_EXPORT intptr_t vmMain( int command, intptr_t arg0, intptr_t arg1, intptr_t ar
 
 	return -1;
 }
-//[Linux]
-/*
-#ifdef __linux__
-}
-#endif
-*/
-//[/Linux]
-#include "../namespace_end.h"
 
 
 void QDECL G_Printf( const char *fmt, ... ) {
@@ -1234,10 +1216,8 @@ void G_UpdateCvars( void ) {
 
 char gSharedBuffer[MAX_G_SHARED_BUFFER_SIZE];
 
-#include "../namespace_begin.h"
 void WP_SaberLoadParms( void );
 void BG_VehicleLoadParms( void );
-#include "../namespace_end.h"
 
 /*
 ============
@@ -2378,7 +2358,7 @@ void CalculateRanks( void ) {
 			trap_SetConfigstring( CS_SCORES2, va("%i", level.clients[ level.sortedClients[1] ].ps.persistant[PERS_SCORE] ) );
 		}
 
-		if (g_gametype.integer != GT_DUEL || g_gametype.integer != GT_POWERDUEL)
+		if (g_gametype.integer != GT_DUEL && g_gametype.integer != GT_POWERDUEL)
 		{ //when not in duel, use this configstring to pass the index of the player currently in first place
 			if ( level.numConnectedClients >= 1 )
 			{
@@ -4325,12 +4305,10 @@ void NAV_CheckCalcPaths( void )
 }
 
 //so shared code can get the local time depending on the side it's executed on
-#include "../namespace_begin.h"
 int BG_GetTime(void)
 {
 	return level.time;
 }
-#include "../namespace_end.h"
 
 /*
 ================

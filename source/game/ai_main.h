@@ -1,3 +1,6 @@
+#ifndef __AI_MAIN_H__
+#define __AI_MAIN_H__
+
 #include "bg_saga.h"
 
 //[ExpSys]
@@ -603,10 +606,8 @@ extern float gDeactivated;
 extern float gBotEdit;
 extern int gWPRenderedFrame;
 
-#include "../namespace_begin.h"
 extern wpobject_t *gWPArray[MAX_WPARRAY_SIZE];
 extern int gWPNum;
-#include "../namespace_end.h"
 
 extern int gLastPrintedIndex;
 extern nodeobject_t nodetable[MAX_NODETABLE_SIZE];
@@ -620,21 +621,14 @@ extern float floattime;
 
 //[TABBots]
 //TAB bot Behaviors
-//[Linux]
-#ifndef __linux__
 typedef enum
-#else
-enum
-#endif
-//[/Linux]
 {
 	BBEHAVE_NONE,  //use this if you don't want a behavior function to be run
 	BBEHAVE_STILL, //bot stands still
 	BBEHAVE_MOVETO, //Move to the current inputted goalPosition;
 	BBEHAVE_ATTACK,  //Attack given entity
 	BBEHAVE_VISUALSCAN	//visually scanning around
-};
+} bot_behave_state_t;
 //[/TABBots]
 
-
-
+#endif

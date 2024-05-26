@@ -362,7 +362,7 @@ void HYBRID_StandardBotAI(bot_state_t *bs, float thinktime)
 				AIMod_Jump ( bs );
 			}
 		
-			if (trto)
+			if (trto) // Ensi: fixme always true
 			{// We have a possibility.. Check it and maybe use it.
 				VectorSubtract(trto, bs->origin, a);
 				vectoangles(a, ang);

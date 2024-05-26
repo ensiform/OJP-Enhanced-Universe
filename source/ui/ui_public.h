@@ -209,8 +209,7 @@ typedef enum {
 	UIMENU_BRIEFING			//briefing menus
 	//UIMENU_CLASSSEL
 	//[/CoOp]
-};
-typedef int uiMenuCommand_t;
+} uiMenuCommand_t;
 
 #define SORT_HOST			0
 #define SORT_MAP			1

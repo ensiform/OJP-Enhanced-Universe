@@ -619,8 +619,6 @@ qboolean COM_ParseVec3( const char **buffer, vec3_t *c)
 
 /*
 ===============
-/*
-===============
 COM_ParseInt
 ===============
 */
@@ -959,19 +957,19 @@ char *Q_stristr( const char *s, const char *find)
 	return (char *)s;
 }
 
-char *Q_StrReplace(char *haystack, char *needle, char *newp)
+char *Q_StrReplace(char *haystack, const char *needle, const char *newp)
 {
 	static char final[MAX_STRING_CHARS] = {""};
 	char dest[MAX_STRING_CHARS] = {""};
 	char new[MAX_STRING_CHARS] = {""};
 	char *destp;
-	int needle_len = 0;
-	int new_len = 0;
+	size_t needle_len = 0;
+	size_t new_len = 0;
 
-	if(!*haystack) {
+	if(!haystack || !*haystack) {
 		return final;
 	}
-	if(!*needle) {
+	if(!needle || !*needle) {
 		Q_strncpyz(final, haystack, sizeof(final));
 		return final;
 	}
@@ -994,7 +992,7 @@ char *Q_StrReplace(char *haystack, char *needle, char *newp)
 			*destp = *haystack;
 			*++destp = '\0';
 		}
-		*haystack++;
+		haystack++;
 	}
 	// tjw: don't work with final return value in case haystack 
 	//      was pointing at it.

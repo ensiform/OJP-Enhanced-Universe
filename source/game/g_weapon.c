@@ -6255,7 +6255,7 @@ gentity_t *WP_FireThermalDetonator( gentity_t *ent, qboolean altFire )
 
 	//return bolt;
 	
-	
+	// THIS FUNCTION NEEDS SERIOUS FIXING cannot return bolt, bolt2 together
 	
 
 	
@@ -6322,7 +6322,7 @@ gentity_t *WP_FireThermalDetonator( gentity_t *ent, qboolean altFire )
 	bolt2->bounceCount = -5;
 	
 
-	return bolt, bolt2;
+	return bolt, bolt2; // which bolt are we using
 	}
 	else
 	{
@@ -6569,7 +6569,7 @@ gentity_t *WP_FireThermalDetonator2( gentity_t *ent, qboolean altFire )
 	bolt2->bounceCount = -5;
 	
 
-	return bolt, bolt2;
+	//return bolt, bolt2;
 	}
 	else
 	{
@@ -6817,7 +6817,7 @@ gentity_t *WP_FireThermalDetonator3( gentity_t *ent, qboolean altFire )
 	bolt2->bounceCount = -5;
 	
 
-	return bolt, bolt2;
+	//return bolt, bolt2;
 	}
 	else
 	{
@@ -7065,7 +7065,7 @@ gentity_t *WP_FireThermalDetonator4( gentity_t *ent, qboolean altFire )
 	bolt2->bounceCount = -5;
 	
 
-	return bolt, bolt2;
+	//return bolt, bolt2;
 	}
 	else
 	{
@@ -10928,9 +10928,6 @@ void Weapon_HookThink (gentity_t *ent)
 
 
 /*
-======================			  
-
-/*
 ======================
 SnapVectorTowards
 
@@ -12011,9 +12008,7 @@ int SkillLevelforWeapon(gentity_t *ent, int weapon)
 FireWeapon
 ===============
 */
-#include "../namespace_begin.h"
 int BG_EmplacedView(vec3_t baseAngles, vec3_t angles, float *newYaw, float constraint);
-#include "../namespace_end.h"
 
 //[WeapAccuracy]
 extern void G_AddMercBalance(gentity_t *self, int amount);

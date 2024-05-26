@@ -528,8 +528,8 @@ void G_SetEnemy( gentity_t *self, gentity_t *enemy )
 			&& enemy->client
 			&& enemy->client->playerTeam == NPCTEAM_PLAYER )
 		{//make the player "evil" so that everyone goes after him
-			enemy->client->enemyTeam = TEAM_FREE;
-			enemy->client->playerTeam = TEAM_FREE;
+			enemy->client->enemyTeam = NPCTEAM_FREE;
+			enemy->client->playerTeam = NPCTEAM_FREE;
 		}
 
 		/*
@@ -1770,7 +1770,7 @@ qboolean G_ValidEnemy( gentity_t *self, gentity_t *enemy )
 	//In case they're in notarget mode
 	if ( enemy->flags & FL_NOTARGET )
 		return qfalse;
-	if( enemy->client && self->client->NPC_class == CLASS_SEEKER || self->client->NPC_class == CLASS_SQUADTEAM)
+	if( enemy->client && (self->client->NPC_class == CLASS_SEEKER || self->client->NPC_class == CLASS_SQUADTEAM))
 	{
 					
 		if ( self->activator == enemy)

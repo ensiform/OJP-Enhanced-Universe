@@ -2,6 +2,9 @@
 //
 // bg_local.h -- local definitions for the bg (both games) files
 
+#ifndef __BG_LOCAL_H__
+#define __BG_LOCAL_H__
+
 #define	MIN_WALK_NORMAL	0.7f		// can't walk on very steep slopes
 
 #define	TIMER_LAND		130
@@ -30,8 +33,6 @@ typedef struct
 	int			previous_waterlevel;
 } pml_t;
 
-#include "../namespace_begin.h"
-
 extern	pml_t		pml;
 
 // movement parameters
@@ -58,10 +59,8 @@ int		trap_FS_FOpenFile( const char *qpath, fileHandle_t *f, fsMode_t mode );
 void	trap_FS_Read( void *buffer, int len, fileHandle_t f );
 void	trap_FS_Write( const void *buffer, int len, fileHandle_t f );
 void	trap_FS_FCloseFile( fileHandle_t f );
-#include "../namespace_end.h"
 
 //PM anim utility functions:
-#include "../namespace_begin.h"
 qboolean PM_SaberInParry( int move );
 qboolean PM_SaberInKnockaway( int move );
 
@@ -111,8 +110,8 @@ void PM_SetForceJumpZStart(float value);
 
 void BG_CycleInven(playerState_t *ps, int direction);
 
-#include "../namespace_end.h"
-
 //[Melee]
 qboolean PM_DoKick(void); //pm function for performing kicks
 //[/Melee]
+
+#endif

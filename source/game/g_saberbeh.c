@@ -3,7 +3,7 @@
 #include "g_saberbeh.h"
 #include "ai_main.h"
 
-static GAME_INLINE void ClearSabMech( sabmech_t *sabmech)
+GAME_INLINE void ClearSabMech( sabmech_t *sabmech)
 {
 	sabmech->doStun = qfalse;
 	sabmech->doKnockdown = qfalse;

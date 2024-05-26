@@ -172,7 +172,7 @@ char *forcepowerDesc[NUM_FORCE_POWERS] =
 };
 
 // Movedata Sounds
-typedef enum
+enum
 {
 	MDS_NONE = 0,
 	MDS_FORCE_JUMP,
@@ -181,7 +181,7 @@ typedef enum
 	MDS_MOVE_SOUNDS_MAX
 };
 
-typedef enum
+enum
 {
 	MD_ACROBATICS = 0,
 	MD_SINGLE_FAST,
@@ -190,7 +190,7 @@ typedef enum
 	MD_DUAL_SABERS,
 	MD_SABER_STAFF,
 	MD_MOVE_TITLE_MAX
-};
+} ;
 
 // Some hard coded badness
 // At some point maybe this should be externalized to a .dat file
@@ -226,113 +226,124 @@ typedef struct
 
 static datpadmovedata_t datapadMoveData[MD_MOVE_TITLE_MAX][MAX_MOVES] = 
 {
+	{
 // Acrobatics
-"@MENUS_FORCE_JUMP1",				"@MENUS_FORCE_JUMP1_DESC",			"BOTH_FORCEJUMP1",				MDS_FORCE_JUMP,
-"@MENUS_FORCE_FLIP",				"@MENUS_FORCE_FLIP_DESC",			"BOTH_FLIP_F",					MDS_FORCE_JUMP,
-"@MENUS_ROLL",						"@MENUS_ROLL_DESC",					"BOTH_ROLL_F",					MDS_ROLL,
-"@MENUS_BACKFLIP_OFF_WALL",			"@MENUS_BACKFLIP_OFF_WALL_DESC",	"BOTH_WALL_FLIP_BACK1",			MDS_FORCE_JUMP,
-"@MENUS_SIDEFLIP_OFF_WALL",			"@MENUS_SIDEFLIP_OFF_WALL_DESC",	"BOTH_WALL_FLIP_RIGHT",			MDS_FORCE_JUMP,
-"@MENUS_WALL_RUN",					"@MENUS_WALL_RUN_DESC",				"BOTH_WALL_RUN_RIGHT",			MDS_FORCE_JUMP,
-"@MENUS_WALL_GRAB_JUMP",			"@MENUS_WALL_GRAB_JUMP_DESC",		"BOTH_FORCEWALLREBOUND_FORWARD",MDS_FORCE_JUMP,
-"@MENUS_RUN_UP_WALL_BACKFLIP",		"@MENUS_RUN_UP_WALL_BACKFLIP_DESC",	"BOTH_FORCEWALLRUNFLIP_START",	MDS_FORCE_JUMP,
-"@MENUS_JUMPUP_FROM_KNOCKDOWN",		"@MENUS_JUMPUP_FROM_KNOCKDOWN_DESC","BOTH_KNOCKDOWN3",				MDS_NONE,
-"@MENUS_JUMPKICK_FROM_KNOCKDOWN",	"@MENUS_JUMPKICK_FROM_KNOCKDOWN_DESC","BOTH_KNOCKDOWN2",			MDS_NONE,
-"@MENUS_ROLL_FROM_KNOCKDOWN",		"@MENUS_ROLL_FROM_KNOCKDOWN_DESC",	"BOTH_KNOCKDOWN1",				MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-
+{"@MENUS_FORCE_JUMP1",				"@MENUS_FORCE_JUMP1_DESC",			"BOTH_FORCEJUMP1",				MDS_FORCE_JUMP},
+{"@MENUS_FORCE_FLIP",				"@MENUS_FORCE_FLIP_DESC",			"BOTH_FLIP_F",					MDS_FORCE_JUMP},
+{"@MENUS_ROLL",						"@MENUS_ROLL_DESC",					"BOTH_ROLL_F",					MDS_ROLL},
+{"@MENUS_BACKFLIP_OFF_WALL",			"@MENUS_BACKFLIP_OFF_WALL_DESC",	"BOTH_WALL_FLIP_BACK1",			MDS_FORCE_JUMP},
+{"@MENUS_SIDEFLIP_OFF_WALL",			"@MENUS_SIDEFLIP_OFF_WALL_DESC",	"BOTH_WALL_FLIP_RIGHT",			MDS_FORCE_JUMP},
+{"@MENUS_WALL_RUN",					"@MENUS_WALL_RUN_DESC",				"BOTH_WALL_RUN_RIGHT",			MDS_FORCE_JUMP},
+{"@MENUS_WALL_GRAB_JUMP",			"@MENUS_WALL_GRAB_JUMP_DESC",		"BOTH_FORCEWALLREBOUND_FORWARD",MDS_FORCE_JUMP},
+{"@MENUS_RUN_UP_WALL_BACKFLIP",		"@MENUS_RUN_UP_WALL_BACKFLIP_DESC",	"BOTH_FORCEWALLRUNFLIP_START",	MDS_FORCE_JUMP},
+{"@MENUS_JUMPUP_FROM_KNOCKDOWN",		"@MENUS_JUMPUP_FROM_KNOCKDOWN_DESC","BOTH_KNOCKDOWN3",				MDS_NONE},
+{"@MENUS_JUMPKICK_FROM_KNOCKDOWN",	"@MENUS_JUMPKICK_FROM_KNOCKDOWN_DESC","BOTH_KNOCKDOWN2",			MDS_NONE},
+{"@MENUS_ROLL_FROM_KNOCKDOWN",		"@MENUS_ROLL_FROM_KNOCKDOWN_DESC",	"BOTH_KNOCKDOWN1",				MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+	},
+	{
 //Single Saber, Fast Style
-"@MENUS_STAB_BACK",					"@MENUS_STAB_BACK_DESC",			"BOTH_A2_STABBACK1",			MDS_SABER,
-"@MENUS_LUNGE_ATTACK",				"@MENUS_LUNGE_ATTACK_DESC",			"BOTH_LUNGE2_B__T_",			MDS_SABER,
-"@MENUS_FAST_ATTACK_KATA",			"@MENUS_FAST_ATTACK_KATA_DESC",		"BOTH_A1_SPECIAL",				MDS_SABER,
-"@MENUS_ATTACK_ENEMYONGROUND",		"@MENUS_ATTACK_ENEMYONGROUND_DESC", "BOTH_STABDOWN",				MDS_FORCE_JUMP,
-"@MENUS_CARTWHEEL",					"@MENUS_CARTWHEEL_DESC",			"BOTH_ARIAL_RIGHT",				MDS_FORCE_JUMP,
-"@MENUS_BOTH_ROLL_STAB",			"@MENUS_BOTH_ROLL_STAB2_DESC",		"BOTH_ROLL_STAB",				MDS_SABER,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
+{"@MENUS_STAB_BACK",					"@MENUS_STAB_BACK_DESC",			"BOTH_A2_STABBACK1",			MDS_SABER},
+{"@MENUS_LUNGE_ATTACK",				"@MENUS_LUNGE_ATTACK_DESC",			"BOTH_LUNGE2_B__T_",			MDS_SABER},
+{"@MENUS_FAST_ATTACK_KATA",			"@MENUS_FAST_ATTACK_KATA_DESC",		"BOTH_A1_SPECIAL",				MDS_SABER},
+{"@MENUS_ATTACK_ENEMYONGROUND",		"@MENUS_ATTACK_ENEMYONGROUND_DESC", "BOTH_STABDOWN",				MDS_FORCE_JUMP},
+{"@MENUS_CARTWHEEL",					"@MENUS_CARTWHEEL_DESC",			"BOTH_ARIAL_RIGHT",				MDS_FORCE_JUMP},
+{"@MENUS_BOTH_ROLL_STAB",			"@MENUS_BOTH_ROLL_STAB2_DESC",		"BOTH_ROLL_STAB",				MDS_SABER},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+	},
+	{
 
 //Single Saber, Medium Style
-"@MENUS_SLASH_BACK",				"@MENUS_SLASH_BACK_DESC",			"BOTH_ATTACK_BACK",				MDS_SABER,
-"@MENUS_FLIP_ATTACK",				"@MENUS_FLIP_ATTACK_DESC",			"BOTH_JUMPFLIPSLASHDOWN1",		MDS_FORCE_JUMP,
-"@MENUS_MEDIUM_ATTACK_KATA",		"@MENUS_MEDIUM_ATTACK_KATA_DESC",	"BOTH_A2_SPECIAL",				MDS_SABER,
-"@MENUS_ATTACK_ENEMYONGROUND",		"@MENUS_ATTACK_ENEMYONGROUND_DESC", "BOTH_STABDOWN",				MDS_FORCE_JUMP,
-"@MENUS_CARTWHEEL",					"@MENUS_CARTWHEEL_DESC",			"BOTH_ARIAL_RIGHT",				MDS_FORCE_JUMP,
-"@MENUS_BOTH_ROLL_STAB",			"@MENUS_BOTH_ROLL_STAB2_DESC",		"BOTH_ROLL_STAB",				MDS_SABER,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
+{"@MENUS_SLASH_BACK",				"@MENUS_SLASH_BACK_DESC",			"BOTH_ATTACK_BACK",				MDS_SABER},
+{"@MENUS_FLIP_ATTACK",				"@MENUS_FLIP_ATTACK_DESC",			"BOTH_JUMPFLIPSLASHDOWN1",		MDS_FORCE_JUMP},
+{"@MENUS_MEDIUM_ATTACK_KATA",		"@MENUS_MEDIUM_ATTACK_KATA_DESC",	"BOTH_A2_SPECIAL",				MDS_SABER},
+{"@MENUS_ATTACK_ENEMYONGROUND",		"@MENUS_ATTACK_ENEMYONGROUND_DESC", "BOTH_STABDOWN",				MDS_FORCE_JUMP},
+{"@MENUS_CARTWHEEL",					"@MENUS_CARTWHEEL_DESC",			"BOTH_ARIAL_RIGHT",				MDS_FORCE_JUMP},
+{"@MENUS_BOTH_ROLL_STAB",			"@MENUS_BOTH_ROLL_STAB2_DESC",		"BOTH_ROLL_STAB",				MDS_SABER},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+	},
+	{
 
 //Single Saber, Strong Style
-"@MENUS_SLASH_BACK",				"@MENUS_SLASH_BACK_DESC",			"BOTH_ATTACK_BACK",				MDS_SABER,
-"@MENUS_JUMP_ATTACK",				"@MENUS_JUMP_ATTACK_DESC",			"BOTH_FORCELEAP2_T__B_",		MDS_FORCE_JUMP,
-"@MENUS_STRONG_ATTACK_KATA",		"@MENUS_STRONG_ATTACK_KATA_DESC",	"BOTH_A3_SPECIAL",				MDS_SABER,
-"@MENUS_ATTACK_ENEMYONGROUND",		"@MENUS_ATTACK_ENEMYONGROUND_DESC", "BOTH_STABDOWN",				MDS_FORCE_JUMP,
-"@MENUS_CARTWHEEL",					"@MENUS_CARTWHEEL_DESC",			"BOTH_ARIAL_RIGHT",				MDS_FORCE_JUMP,
-"@MENUS_BOTH_ROLL_STAB",			"@MENUS_BOTH_ROLL_STAB2_DESC",		"BOTH_ROLL_STAB",				MDS_SABER,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
+{"@MENUS_SLASH_BACK",				"@MENUS_SLASH_BACK_DESC",			"BOTH_ATTACK_BACK",				MDS_SABER},
+{"@MENUS_JUMP_ATTACK",				"@MENUS_JUMP_ATTACK_DESC",			"BOTH_FORCELEAP2_T__B_",		MDS_FORCE_JUMP},
+{"@MENUS_STRONG_ATTACK_KATA",		"@MENUS_STRONG_ATTACK_KATA_DESC",	"BOTH_A3_SPECIAL",				MDS_SABER},
+{"@MENUS_ATTACK_ENEMYONGROUND",		"@MENUS_ATTACK_ENEMYONGROUND_DESC", "BOTH_STABDOWN",				MDS_FORCE_JUMP},
+{"@MENUS_CARTWHEEL",					"@MENUS_CARTWHEEL_DESC",			"BOTH_ARIAL_RIGHT",				MDS_FORCE_JUMP},
+{"@MENUS_BOTH_ROLL_STAB",			"@MENUS_BOTH_ROLL_STAB2_DESC",		"BOTH_ROLL_STAB",				MDS_SABER},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+	},
+	{
 
 //Dual Sabers
-"@MENUS_SLASH_BACK",				"@MENUS_SLASH_BACK_DESC",			"BOTH_ATTACK_BACK",				MDS_SABER,
-"@MENUS_FLIP_FORWARD_ATTACK",		"@MENUS_FLIP_FORWARD_ATTACK_DESC",	"BOTH_JUMPATTACK6",				MDS_FORCE_JUMP,
-"@MENUS_DUAL_SABERS_TWIRL",			"@MENUS_DUAL_SABERS_TWIRL_DESC",	"BOTH_SPINATTACK6",				MDS_SABER,
-"@MENUS_ATTACK_ENEMYONGROUND",		"@MENUS_ATTACK_ENEMYONGROUND_DESC", "BOTH_STABDOWN_DUAL",				MDS_FORCE_JUMP,
-"@MENUS_DUAL_SABER_BARRIER",		"@MENUS_DUAL_SABER_BARRIER_DESC",	"BOTH_A6_SABERPROTECT",			MDS_SABER,
-"@MENUS_DUAL_STAB_FRONT_BACK",		"@MENUS_DUAL_STAB_FRONT_BACK_DESC", "BOTH_A6_FB",					MDS_SABER,
-"@MENUS_DUAL_STAB_LEFT_RIGHT",		"@MENUS_DUAL_STAB_LEFT_RIGHT_DESC", "BOTH_A6_LR",					MDS_SABER,
-"@MENUS_CARTWHEEL",					"@MENUS_CARTWHEEL_DESC",			"BOTH_ARIAL_RIGHT",				MDS_FORCE_JUMP,
-"@MENUS_BOTH_ROLL_STAB",			"@MENUS_BOTH_ROLL_STAB_DESC",		"BOTH_ROLL_STAB",				MDS_SABER,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
+{"@MENUS_SLASH_BACK",				"@MENUS_SLASH_BACK_DESC",			"BOTH_ATTACK_BACK",				MDS_SABER},
+{"@MENUS_FLIP_FORWARD_ATTACK",		"@MENUS_FLIP_FORWARD_ATTACK_DESC",	"BOTH_JUMPATTACK6",				MDS_FORCE_JUMP},
+{"@MENUS_DUAL_SABERS_TWIRL",			"@MENUS_DUAL_SABERS_TWIRL_DESC",	"BOTH_SPINATTACK6",				MDS_SABER},
+{"@MENUS_ATTACK_ENEMYONGROUND",		"@MENUS_ATTACK_ENEMYONGROUND_DESC", "BOTH_STABDOWN_DUAL",				MDS_FORCE_JUMP},
+{"@MENUS_DUAL_SABER_BARRIER",		"@MENUS_DUAL_SABER_BARRIER_DESC",	"BOTH_A6_SABERPROTECT",			MDS_SABER},
+{"@MENUS_DUAL_STAB_FRONT_BACK",		"@MENUS_DUAL_STAB_FRONT_BACK_DESC", "BOTH_A6_FB",					MDS_SABER},
+{"@MENUS_DUAL_STAB_LEFT_RIGHT",		"@MENUS_DUAL_STAB_LEFT_RIGHT_DESC", "BOTH_A6_LR",					MDS_SABER},
+{"@MENUS_CARTWHEEL",					"@MENUS_CARTWHEEL_DESC",			"BOTH_ARIAL_RIGHT",				MDS_FORCE_JUMP},
+{"@MENUS_BOTH_ROLL_STAB",			"@MENUS_BOTH_ROLL_STAB_DESC",		"BOTH_ROLL_STAB",				MDS_SABER},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+	},
+	{
 
 // Saber Staff
-"@MENUS_STAB_BACK",					"@MENUS_STAB_BACK_DESC",			"BOTH_A2_STABBACK1",			MDS_SABER,
-"@MENUS_BACK_FLIP_ATTACK",			"@MENUS_BACK_FLIP_ATTACK_DESC",		"BOTH_JUMPATTACK7",				MDS_FORCE_JUMP,
-"@MENUS_SABER_STAFF_TWIRL",			"@MENUS_SABER_STAFF_TWIRL_DESC",	"BOTH_SPINATTACK7",				MDS_SABER,
-"@MENUS_ATTACK_ENEMYONGROUND",		"@MENUS_ATTACK_ENEMYONGROUND_DESC", "BOTH_STABDOWN_STAFF",			MDS_FORCE_JUMP,
-"@MENUS_SPINNING_KATA",				"@MENUS_SPINNING_KATA_DESC",		"BOTH_A7_SOULCAL",				MDS_SABER,
-"@MENUS_KICK1",						"@MENUS_KICK1_DESC",				"BOTH_A7_KICK_F",				MDS_FORCE_JUMP,
-"@MENUS_JUMP_KICK",					"@MENUS_JUMP_KICK_DESC",			"BOTH_A7_KICK_F_AIR",			MDS_FORCE_JUMP,
-"@MENUS_BUTTERFLY_ATTACK",			"@MENUS_BUTTERFLY_ATTACK_DESC",		"BOTH_BUTTERFLY_FR1",			MDS_SABER,
-"@MENUS_BOTH_ROLL_STAB",			"@MENUS_BOTH_ROLL_STAB2_DESC",		"BOTH_ROLL_STAB",				MDS_SABER,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
-NULL, NULL, 0,	MDS_NONE,
+{"@MENUS_STAB_BACK",					"@MENUS_STAB_BACK_DESC",			"BOTH_A2_STABBACK1",			MDS_SABER},
+{"@MENUS_BACK_FLIP_ATTACK",			"@MENUS_BACK_FLIP_ATTACK_DESC",		"BOTH_JUMPATTACK7",				MDS_FORCE_JUMP},
+{"@MENUS_SABER_STAFF_TWIRL",			"@MENUS_SABER_STAFF_TWIRL_DESC",	"BOTH_SPINATTACK7",				MDS_SABER},
+{"@MENUS_ATTACK_ENEMYONGROUND",		"@MENUS_ATTACK_ENEMYONGROUND_DESC", "BOTH_STABDOWN_STAFF",			MDS_FORCE_JUMP},
+{"@MENUS_SPINNING_KATA",				"@MENUS_SPINNING_KATA_DESC",		"BOTH_A7_SOULCAL",				MDS_SABER},
+{"@MENUS_KICK1",						"@MENUS_KICK1_DESC",				"BOTH_A7_KICK_F",				MDS_FORCE_JUMP},
+{"@MENUS_JUMP_KICK",					"@MENUS_JUMP_KICK_DESC",			"BOTH_A7_KICK_F_AIR",			MDS_FORCE_JUMP},
+{"@MENUS_BUTTERFLY_ATTACK",			"@MENUS_BUTTERFLY_ATTACK_DESC",		"BOTH_BUTTERFLY_FR1",			MDS_SABER},
+{"@MENUS_BOTH_ROLL_STAB",			"@MENUS_BOTH_ROLL_STAB2_DESC",		"BOTH_ROLL_STAB",				MDS_SABER},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+{NULL, NULL, NULL,	MDS_NONE},
+	}
 };
 
 
@@ -380,7 +391,6 @@ void UI_ReaAllocMem(void **ptr, int sze, int count);
 char *UI_GetSaberHiltInfo(qboolean TwoHanded, int index);
 //[/DynamicMemory_Sabers]
 
-#include "../namespace_begin.h"
 // Functions in BG or ui_shared
 void Menu_ShowGroup (menuDef_t *menu, char *itemName, qboolean showFlag);
 void Menu_ItemDisable(menuDef_t *menu, char *name,int disableFlag);
@@ -443,7 +453,6 @@ Q_EXPORT intptr_t vmMain( int command, int arg0, intptr_t arg1, intptr_t arg2, i
 
 	return -1;
 }
-#include "../namespace_end.h"
 
 siegeClassDesc_t g_UIClassDescriptions[MAX_SIEGE_CLASSES];
 siegeTeam_t *siegeTeam1 = NULL;
@@ -457,10 +466,8 @@ int g_UIGloballySelectedSiegeClass = -1;
 qboolean	UIPAFtextLoaded = qfalse;
 animation_t	uiHumanoidAnimations[MAX_TOTALANIMATIONS]; //humanoid animations are the only ones that are statically allocated.
 
-#include "../namespace_begin.h"
 bgLoadedAnim_t bgAllAnims[MAX_ANIM_FILES];
 int uiNumAllAnims = 1; //start off at 0, because 0 will always be assigned to humanoid.
-#include "../namespace_end.h"
 
 animation_t *UI_AnimsetAlloc(void)
 {
@@ -514,7 +521,7 @@ void siege_Cvar_VariableStringBuffer( char *var_name, char *buffer, int bufsize 
 {
 	char **tmp;
 	char ui_siegeInfo[MAX_STRING_CHARS];
-	if(!ui_siegeStruct)
+	if(!ui_siegeStruct[0])
 	{
 		trap_Cvar_VariableStringBuffer( "ui_siegeInfo", ui_siegeInfo, MAX_STRING_CHARS );
 		sscanf(ui_siegeInfo,"%p",&ui_siegeStruct);
@@ -560,7 +567,6 @@ models/players/visor/animation.cfg, etc
 
 ======================
 */
-#include "../namespace_begin.h"
 static char UIPAFtext[60000];
 int UI_ParseAnimationFile(const char *filename, animation_t *animset, qboolean isHumanoid) 
 {
@@ -765,8 +771,6 @@ int UI_ParseAnimationFile(const char *filename, animation_t *animset, qboolean i
 
 //menuDef_t *Menus_FindByName(const char *p);
 void Menu_ShowItemByName(menuDef_t *menu, const char *p, qboolean bShow);
-
-#include "../namespace_end.h"
 
 void UpdateForceUsed();
 
@@ -977,7 +981,6 @@ void _UI_DrawRect( float x, float y, float width, float height, float size, cons
 	trap_R_SetColor( NULL );
 }
 
-#include "../namespace_begin.h"
 int MenuFontToHandle(int iMenuFont)
 {
 	switch (iMenuFont)
@@ -990,7 +993,6 @@ int MenuFontToHandle(int iMenuFont)
 
 	return uiInfo.uiDC.Assets.qhMediumFont;	// 0;
 }
-#include "../namespace_end.h"
 
 int Text_Width(const char *text, float scale, int iMenuFont) 
 {	
@@ -1044,9 +1046,9 @@ void Text_PaintWithCursor(float x, float y, float scale, vec4_t color, const cha
 	//
 	{
 		char sTemp[1024];
-		int iCopyCount = limit ? min(strlen(text), limit) : strlen(text);
-			iCopyCount = min(iCopyCount,cursorPos);
-			iCopyCount = min(iCopyCount,sizeof(sTemp));
+		int iCopyCount = limit ? MIN(strlen(text), limit) : strlen(text);
+			iCopyCount = MIN(iCopyCount,cursorPos);
+			iCopyCount = MIN(iCopyCount,sizeof(sTemp));
 
 			// copy text into temp buffer for pixel measure...
 			//			
@@ -1148,9 +1150,7 @@ static void UI_BuildPlayerList();
 /* not used in basejka code
 //char parsedFPMessage[1024];
 
-#include "../namespace_begin.h"
 extern int FPMessageTime;
-#include "../namespace_end.h"
 */
 //[/UITweaks]
 
@@ -1235,37 +1235,6 @@ void _UI_Refresh( int realtime )
 	//if (ui_rankChange.integer)
 	//[/ExpSys]
 	{
-		//[UITweaks]
-		//not used in basejka code
-		/*
-		FPMessageTime = realtime + 3000;
-
-		if (!parsedFPMessage[0] /*&& uiMaxRank > ui_rankChange.integer*//*)
-		{
-			const char *printMessage = UI_GetStringEdString("MP_INGAME", "SET_NEW_RANK");
-
-			int i = 0;
-			int p = 0;
-			int linecount = 0;
-
-			while (printMessage[i] && p < 1024)
-			{
-				parsedFPMessage[p] = printMessage[i];
-				p++;
-				i++;
-				linecount++;
-
-				if (linecount > 64 && printMessage[i] == ' ')
-				{
-					parsedFPMessage[p] = '\n';
-					p++;
-					linecount = 0;
-				}
-			}
-			parsedFPMessage[p] = '\0';
-		}
-		*/
-		//[/UITweaks]
 
 		//if (uiMaxRank > ui_rankChange.integer)
 		{
@@ -1354,9 +1323,7 @@ void _UI_Refresh( int realtime )
 _UI_Shutdown
 =================
 */
-#include "../namespace_begin.h"
 void UI_CleanupGhoul2(void);
-#include "../namespace_end.h"
 
 //[DynamicMemory_Sabers]
 void UI_FreeSabers(void);
@@ -4036,9 +4003,7 @@ static qboolean UI_Effects_HandleKey(int flags, float *special, int key) {
 	return qfalse;
 }
 
-#include "../namespace_begin.h"
 extern void	Item_RunScript(itemDef_t *item, const char *s);		//from ui_shared;
-#include "../namespace_end.h"
 
 // For hot keys on the chat main menu.
 static qboolean UI_Chat_Main_HandleKey(int key) 
@@ -5664,7 +5629,7 @@ static void UI_GetCharacterCvars ( void )
 
 		for (i = 0; i < uiInfo.playerSpeciesCount; i++)
 		{
-			if ( !stricmp(model, uiInfo.playerSpecies[i].Name) )
+			if ( !Q_stricmp(model, uiInfo.playerSpecies[i].Name) )
 			{
 				uiInfo.playerSpeciesIndex = i;
 				break;
@@ -5676,7 +5641,7 @@ static void UI_GetCharacterCvars ( void )
 		model = UI_Cvar_VariableString ( "ui_char_model" );
 		for (i = 0; i < uiInfo.playerSpeciesCount; i++)
 		{
-			if ( !stricmp(model, uiInfo.playerSpecies[i].Name) )
+			if ( !Q_stricmp(model, uiInfo.playerSpecies[i].Name) )
 			{
 				uiInfo.playerSpeciesIndex = i;
 				return;	//FOUND IT, don't fall through
@@ -5962,10 +5927,8 @@ static void UI_SetSaberBoxesandHilts (void)
 
 //extern qboolean UI_SaberModelForSaber( const char *saberName, char *saberModel );
 extern qboolean UI_SaberSkinForSaber( const char *saberName, char *saberSkin );
-#include "../namespace_begin.h"
 extern qboolean ItemParse_asset_model_go( itemDef_t *item, const char *name,int *runTimeLength );
 extern qboolean ItemParse_model_g2skin_go( itemDef_t *item, const char *skinName );
-#include "../namespace_end.h"
 
 static void UI_UpdateSaberType( void )
 {
@@ -6039,14 +6002,12 @@ static void UI_UpdateSaberHilt( qboolean secondSaber )
 static void UI_UpdateSaberColor( qboolean secondSaber )
 {
 	//[RGBSabers]
-	char str[32];
-	str[0] = '\0';
+	char str[33];
 
-	strncat(str,va("%i,%i,%i",ui_sab1_r.integer,ui_sab1_g.integer,ui_sab1_b.integer),sizeof(str));
+	Com_sprintf(str,sizeof(str),"%i,%i,%i",ui_sab1_r.integer,ui_sab1_g.integer,ui_sab1_b.integer);
 	trap_Cvar_Set("rgb_saber1", str);
-	str[0] = '\0';
 
-	strncat(str,va("%i,%i,%i",ui_sab2_r.integer,ui_sab2_g.integer,ui_sab2_b.integer),sizeof(str));
+	Com_sprintf(str,sizeof(str),"%i,%i,%i",ui_sab2_r.integer,ui_sab2_g.integer,ui_sab2_b.integer);
 	trap_Cvar_Set("rgb_saber2", str);
 
 //	Com_Printf("update saber : %i\n",secondSaber);
@@ -6132,9 +6093,7 @@ static void UI_GetSaberCvars ( void )
 
 
 //extern qboolean ItemParse_model_g2skin_go( itemDef_t *item, const char *skinName );
-#include "../namespace_begin.h"
 extern qboolean ItemParse_model_g2anim_go( itemDef_t *item, const char *animName );
-#include "../namespace_end.h"
 //extern qboolean ItemParse_asset_model_go( itemDef_t *item, const char *name );
 
 void UI_UpdateCharacterSkin( void )
@@ -7620,9 +7579,7 @@ static void UI_RunMenuScript(char **args)
 static void UI_GetTeamColor(vec4_t *color) {
 }
 
-#include "../namespace_begin.h"
 int BG_SiegeCountBaseClass(const int team, const short classIndex);
-#include "../namespace_end.h"
 
 static void UI_SiegeClassCnt( const int team )
 {
@@ -8529,7 +8486,7 @@ void UI_SetSiegeTeams(void)
 
 	Com_sprintf(levelname, sizeof(levelname), "maps/%s.siege", mapname);
 
-	if (!levelname || !levelname[0])
+	if (!levelname[0])
 	{
 		return;
 	}
@@ -8796,7 +8753,7 @@ static int UI_FeederCount(float feederID)
 				siege_Cvar_VariableStringBuffer( va("ui_class_weapon%i", i), info, sizeof(info) );
 				//trap_Cvar_VariableStringBuffer( va("ui_class_weapon%i", i), info, sizeof(info) );
 				//[/SIEGECVARFIX]
-				if (stricmp(info,"gfx/2d/select")!=0)
+				if (Q_stricmp(info,"gfx/2d/select")!=0)
 				{
 					count++;
 				}
@@ -8814,8 +8771,8 @@ static int UI_FeederCount(float feederID)
 				//trap_Cvar_VariableStringBuffer( va("ui_class_item%i", i), info, sizeof(info) );
 				//[/SIEGECVARFIX]
 				// A hack so health and ammo dispenser icons don't show up.
-				if ((stricmp(info,"gfx/2d/select")!=0) && (stricmp(info,"gfx/hud/i_icon_healthdisp")!=0) &&
-					(stricmp(info,"gfx/hud/i_icon_ammodisp")!=0))
+				if ((Q_stricmp(info,"gfx/2d/select")!=0) && (Q_stricmp(info,"gfx/hud/i_icon_healthdisp")!=0) &&
+					(Q_stricmp(info,"gfx/hud/i_icon_ammodisp")!=0))
 				{
 					count++;
 				}
@@ -8831,7 +8788,7 @@ static int UI_FeederCount(float feederID)
 				siege_Cvar_VariableStringBuffer( va("ui_class_power%i", i), info, sizeof(info) );
 				//trap_Cvar_VariableStringBuffer( va("ui_class_power%i", i), info, sizeof(info) );
 				//[/SIEGECVARFIX]
-				if (stricmp(info,"gfx/2d/select")!=0)
+				if (Q_stricmp(info,"gfx/2d/select")!=0)
 				{
 					count++;
 				}
@@ -9450,7 +9407,7 @@ static qhandle_t UI_FeederItemImage(float feederID, int index) {
 			siege_Cvar_VariableStringBuffer( va("ui_class_weapon%i", i), info, sizeof(info) );
 			//trap_Cvar_VariableStringBuffer( va("ui_class_weapon%i", i), info, sizeof(info) );
 			//[/SIEGECVARFIX]
-			if (stricmp(info,"gfx/2d/select")!=0)
+			if (Q_stricmp(info,"gfx/2d/select")!=0)
 			{
 				if (validCnt == index)
 				{
@@ -9471,8 +9428,8 @@ static qhandle_t UI_FeederItemImage(float feederID, int index) {
 			//trap_Cvar_VariableStringBuffer( va("ui_class_item%i", i), info, sizeof(info) );
 			//[/SIEGECVARFIX]
 			// A hack so health and ammo dispenser icons don't show up.
-			if ((stricmp(info,"gfx/2d/select")!=0) && (stricmp(info,"gfx/hud/i_icon_healthdisp")!=0) &&
-				(stricmp(info,"gfx/hud/i_icon_ammodisp")!=0))
+			if ((Q_stricmp(info,"gfx/2d/select")!=0) && (Q_stricmp(info,"gfx/hud/i_icon_healthdisp")!=0) &&
+				(Q_stricmp(info,"gfx/hud/i_icon_ammodisp")!=0))
 			{
 				if (validCnt == index)
 				{
@@ -9514,7 +9471,7 @@ static qhandle_t UI_FeederItemImage(float feederID, int index) {
 			siege_Cvar_VariableStringBuffer( va("ui_class_power%i", i), info, sizeof(info) );
 			//trap_Cvar_VariableStringBuffer( va("ui_class_power%i", i), info, sizeof(info) );
 			//[/SIEGECVARFIX]
-			if (stricmp(info,"gfx/2d/select")!=0)
+			if (Q_stricmp(info,"gfx/2d/select")!=0)
 			{
 				if (validCnt == index)
 				{

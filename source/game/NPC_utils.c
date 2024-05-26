@@ -1792,7 +1792,7 @@ void G_CheckCharmed( gentity_t *self )
 		&& (self->NPC->charmedTime < level.time ||self->health <= 0) )
 	{//we were charmed, set us back!
 		//NOTE: presumptions here...
-		team_t	savTeam = self->client->enemyTeam;
+		npcteam_t	savTeam = self->client->enemyTeam;
 		self->client->enemyTeam = self->client->playerTeam;
 		self->client->playerTeam = savTeam;
 		self->client->leader = NULL;

@@ -400,27 +400,27 @@ void ParseAnimationEvtBlock(const char *aeb_filename, animevent_t *animEvents, a
 			{
 				break;
 			}
-			if ( stricmp( token, "CHAN_VOICE_ATTEN" ) == 0 )
+			if ( Q_stricmp( token, "CHAN_VOICE_ATTEN" ) == 0 )
 			{
 				animEvents[curAnimEvent].eventData[AED_SOUNDCHANNEL] = CHAN_VOICE_ATTEN;
 			}
-			else if ( stricmp( token, "CHAN_VOICE_GLOBAL" ) == 0 )
+			else if ( Q_stricmp( token, "CHAN_VOICE_GLOBAL" ) == 0 )
 			{
 				animEvents[curAnimEvent].eventData[AED_SOUNDCHANNEL] = CHAN_VOICE_GLOBAL;
 			}
-			else if ( stricmp( token, "CHAN_ANNOUNCER" ) == 0 )
+			else if ( Q_stricmp( token, "CHAN_ANNOUNCER" ) == 0 )
 			{
 				animEvents[curAnimEvent].eventData[AED_SOUNDCHANNEL] = CHAN_ANNOUNCER;
 			}
-			else if ( stricmp( token, "CHAN_BODY" ) == 0 )
+			else if ( Q_stricmp( token, "CHAN_BODY" ) == 0 )
 			{
 				animEvents[curAnimEvent].eventData[AED_SOUNDCHANNEL] = CHAN_BODY;
 			}
-			else if ( stricmp( token, "CHAN_WEAPON" ) == 0 )
+			else if ( Q_stricmp( token, "CHAN_WEAPON" ) == 0 )
 			{
 				animEvents[curAnimEvent].eventData[AED_SOUNDCHANNEL] = CHAN_WEAPON;
 			}
-			else if ( stricmp( token, "CHAN_VOICE" ) == 0 )
+			else if ( Q_stricmp( token, "CHAN_VOICE" ) == 0 )
 			{
 				animEvents[curAnimEvent].eventData[AED_SOUNDCHANNEL] = CHAN_VOICE;
 			} 
@@ -577,27 +577,27 @@ void ParseAnimationEvtBlock(const char *aeb_filename, animevent_t *animEvents, a
 			{
 				break;
 			}
-			if ( stricmp( token, "CHAN_VOICE_ATTEN" ) == 0 )
+			if ( Q_stricmp( token, "CHAN_VOICE_ATTEN" ) == 0 )
 			{
 				animEvents[curAnimEvent].eventData[AED_SOUNDCHANNEL] = CHAN_VOICE_ATTEN;
 			}
-			else if ( stricmp( token, "CHAN_VOICE_GLOBAL" ) == 0 )
+			else if ( Q_stricmp( token, "CHAN_VOICE_GLOBAL" ) == 0 )
 			{
 				animEvents[curAnimEvent].eventData[AED_SOUNDCHANNEL] = CHAN_VOICE_GLOBAL;
 			}
-			else if ( stricmp( token, "CHAN_ANNOUNCER" ) == 0 )
+			else if ( Q_stricmp( token, "CHAN_ANNOUNCER" ) == 0 )
 			{
 				animEvents[curAnimEvent].eventData[AED_SOUNDCHANNEL] = CHAN_ANNOUNCER;
 			}
-			else if ( stricmp( token, "CHAN_BODY" ) == 0 )
+			else if ( Q_stricmp( token, "CHAN_BODY" ) == 0 )
 			{
 				animEvents[curAnimEvent].eventData[AED_SOUNDCHANNEL] = CHAN_BODY;
 			}
-			else if ( stricmp( token, "CHAN_WEAPON" ) == 0 )
+			else if ( Q_stricmp( token, "CHAN_WEAPON" ) == 0 )
 			{
 				animEvents[curAnimEvent].eventData[AED_SOUNDCHANNEL] = CHAN_WEAPON;
 			}
-			else if ( stricmp( token, "CHAN_VOICE" ) == 0 )
+			else if ( Q_stricmp( token, "CHAN_VOICE" ) == 0 )
 			{
 				animEvents[curAnimEvent].eventData[AED_SOUNDCHANNEL] = CHAN_VOICE;
 			} 
@@ -1333,10 +1333,8 @@ qboolean	trueviewwarning = qfalse;
 CG_RegisterClientModelname
 ==========================
 */
-#include "../namespace_begin.h"
 qboolean BG_IsValidCharacterModel(const char *modelName, const char *skinName);
 qboolean BG_ValidateSkinForTeam( const char *modelName, char *skinName, int team, float *colors );
-#include "../namespace_end.h"
 
 static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelName, const char *skinName, const char *teamName, int clientNum ) {
 	int handle;
@@ -1498,7 +1496,7 @@ retryModel:
 		const char	*p;
 
 		//Now turn on/off any surfaces
-		if ( surfOff && surfOff[0] )
+		if ( surfOff[0] )
 		{
 			p = surfOff;
 			while ( 1 ) 
@@ -1512,7 +1510,7 @@ retryModel:
 				trap_G2API_SetSurfaceOnOff( ci->ghoul2Model, token, 0x00000002/*G2SURFACEFLAG_OFF*/ );
 			}
 		}
-		if ( surfOn && surfOn[0] )
+		if ( surfOn[0] )
 		{
 			p = surfOn;
 			while ( 1 )
@@ -1786,7 +1784,7 @@ void CG_LoadCISounds(clientInfo_t *ci, qboolean modelloaded)
 
 	dir = ci->modelName;
 
-	if ( !ci->skinName || !Q_stricmp( "default", ci->skinName ) )
+	if ( ci->skinName[0] == '\0' || !Q_stricmp( "default", ci->skinName ) )
 	{//try default sounds.cfg first
 		fLen = trap_FS_FOpenFile(va("models/players/%s/sounds.cfg", dir), &f, FS_READ);
 		if ( !f ) 
@@ -2569,9 +2567,7 @@ void ParseRGBSaber(char * str, vec3_t c);
 void CG_ParseScriptedSaber(char *script, clientInfo_t *ci, int snum);
 //[/RGBSabers]
 
-#include "../namespace_begin.h"
 void WP_SetSaber( int entNum, saberInfo_t *sabers, int saberNum, const char *saberName );
-#include "../namespace_end.h"
 extern void *CG_G2WeaponInstance2(centity_t *cent, int weapon);
 void CG_NewClientInfo( int clientNum, qboolean entitiesInitialized ) {
 	clientInfo_t *ci;
@@ -4034,10 +4030,8 @@ qboolean CG_InRollAnim( centity_t *cent )
 CG_SetLerpFrameAnimation
 ===============
 */
-#include "../namespace_begin.h"
 qboolean BG_SaberStanceAnim( int anim );
 qboolean PM_RunningAnim( int anim );
-#include "../namespace_end.h"
 static void CG_SetLerpFrameAnimation( centity_t *cent, clientInfo_t *ci, lerpFrame_t *lf, int newAnimation, float animSpeedMult, qboolean torsoOnly, qboolean flipState) {
 	animation_t	*anim;
 	float animSpeed;
@@ -4542,9 +4536,7 @@ static void CG_ClearLerpFrame( centity_t *cent, clientInfo_t *ci, lerpFrame_t *l
 CG_PlayerAnimation
 ===============
 */
-#include "../namespace_begin.h"
 qboolean PM_WalkingAnim( int anim );
-#include "../namespace_end.h"
 
 static void CG_PlayerAnimation( centity_t *cent, int *legsOld, int *legs, float *legsBackLerp,
 						int *torsoOld, int *torso, float *torsoBackLerp ) {
@@ -10885,14 +10877,12 @@ void CG_SaberCompWork(vec3_t start, vec3_t end, centity_t *owner, int saberNum, 
 #define SABER_TRAIL_TIME	40.0f
 #define FX_USE_ALPHA		0x08000000
 
-#include "../namespace_begin.h"
 qboolean BG_SuperBreakWinAnim( int anim );
-#include "../namespace_end.h"
 
 void CG_AddSaberBlade( centity_t *cent, centity_t *scent, refEntity_t *saber, int renderfx, int modelIndex, int saberNum, int bladeNum, vec3_t origin, vec3_t angles, qboolean fromSaber, qboolean dontDraw)
 {
 	vec3_t	org_, end, v,
-	axis_[3] = {0,0,0, 0,0,0, 0,0,0};	// shut the compiler up
+	axis_[3] = {{0,0,0}, {0,0,0}, {0,0,0}};	// shut the compiler up
 	//[SFXSabers]
 	vec3_t	rgb1={255.0f,255.0f,255.0f};
 	//[/SFXSabers]
@@ -11469,6 +11459,7 @@ CheckTrail:
     {// Use the supremely hacky SFX Sabers.
         saberTrail->duration = 0;
 
+		// Ensi: base, tip, dualbase, dualtip are all wrong checks here, they are arrays and these statements are always true
 		if(!saberTrail->base || !saberTrail->tip || !saberTrail->dualbase || !saberTrail->dualtip || !saberTrail->lastTime || !saberTrail->inAction)
 		{
 			VectorCopy( org_, saberTrail->base );
@@ -12154,10 +12145,8 @@ int CG_HandleAppendedSkin(char *modelName)
 }
 
 //Create a temporary ghoul2 instance and get the gla name so we can try loading animation data and sounds.
-#include "../namespace_begin.h"
 void BG_GetVehicleModelName(char *modelname);
 void BG_GetVehicleSkinName(char *skinname);
-#include "../namespace_end.h"
 
 void CG_CacheG2AnimInfo(char *modelName)
 {
@@ -12278,12 +12267,10 @@ static void CG_RegisterVehicleAssets( Vehicle_t *pVeh )
 
 extern void CG_HandleNPCSounds(centity_t *cent);
 
-#include "../namespace_begin.h"
 extern void G_CreateAnimalNPC( Vehicle_t **pVeh, const char *strAnimalType );
 extern void G_CreateSpeederNPC( Vehicle_t **pVeh, const char *strType );
 extern void G_CreateWalkerNPC( Vehicle_t **pVeh, const char *strAnimalType );
 extern void G_CreateFighterNPC( Vehicle_t **pVeh, const char *strType );
-#include "../namespace_end.h"
 
 extern playerState_t *cgSendPS[MAX_GENTITIES];
 void CG_G2AnimEntModelLoad(centity_t *cent)
@@ -13933,7 +13920,7 @@ static void CG_VehicleHeatEffect( vec3_t org, centity_t *cent )
 static int lastFlyBySound[MAX_GENTITIES] = {0};
 #define	FLYBYSOUNDTIME 2000
 int	cg_lastHyperSpaceEffectTime = 0;
-static CGAME_INLINE void CG_VehicleEffects(centity_t *cent)
+CGAME_INLINE void CG_VehicleEffects(centity_t *cent)
 {
 	Vehicle_t *pVehNPC;
 
@@ -14274,9 +14261,7 @@ static CGAME_INLINE void CG_VehicleEffects(centity_t *cent)
 CG_Player
 ===============
 */
-#include "../namespace_begin.h"
 int BG_EmplacedView(vec3_t baseAngles, vec3_t angles, float *newYaw, float constraint);
-#include "../namespace_end.h"
 
 float CG_RadiusForCent( centity_t *cent )
 {
@@ -14565,15 +14550,15 @@ void SmoothTrueView(vec3_t eyeAngles)
 	//Flips
 	if( cg_trueflip.integer )
 	{
-		if( ((cg.predictedPlayerState.legsAnim) == BOTH_WALL_FLIP_BACK1) )
+		if( (cg.predictedPlayerState.legsAnim) == BOTH_WALL_FLIP_BACK1 )
 		{//Flip moves that look good with the eyemovement locked
 			eyeRange = qfalse;
 			DidSpecial = qtrue;
 		}
 		else if ( cg_trueflip.integer == 1 )
 		{//Use simple flip for the more complicated flips
-			if ( ((cg.predictedPlayerState.legsAnim) == BOTH_FLIP_F)
-				|| ((cg.predictedPlayerState.legsAnim) == BOTH_ROLL_F) )
+			if ( cg.predictedPlayerState.legsAnim == BOTH_FLIP_F
+				|| cg.predictedPlayerState.legsAnim == BOTH_ROLL_F )
 			{//forward flips
 				VectorCopy( cg.refdef.viewangles, eyeAngles );
 				eyeAngles[0] += AngleNormalize180( 360 - (360 * LegAnimPoint) );
@@ -15125,7 +15110,7 @@ void CG_VisualWeaponsUpdate( centity_t *cent, clientInfo_t *ci )
 					}
 
 					//secondary saber
-					if(ci->saber[1].model && ci->ghoul2Weapons[1])
+					if(ci->saber[1].model[0] && ci->ghoul2Weapons[1])
 					{//have a second saber
 						if( ci->holster_saber2 != -1 )
 						{//use specialized bolt.
@@ -16982,67 +16967,6 @@ void CG_Player( centity_t *cent ) {
 	}
 
 SkipTrueView:
-
-	/*
-#if 0
-	if (cg.renderingThirdPerson)
-	{
-		if (cgFPLSState != 0)
-		{
-			CG_ForceFPLSPlayerModel(cent, ci);
-			cgFPLSState = 0;
-			return;
-		}
-	}
-	else if (ci->team == TEAM_SPECTATOR || (cg.snap && (cg.snap->ps.pm_flags & PMF_FOLLOW)))
-	{ //don't allow this when spectating
-		if (cgFPLSState != 0)
-		{
-			trap_Cvar_Set("cg_fpls", "0");
-			cg_fpls.integer = 0;
-
-			CG_ForceFPLSPlayerModel(cent, ci);
-			cgFPLSState = 0;
-			return;
-		}
-
-		if (cg_fpls.integer)
-		{
-			trap_Cvar_Set("cg_fpls", "0");
-		}
-	}
-	else
-	{
-		if (cg_fpls.integer && cent->currentState.weapon == WP_SABER && cg.snap && cent->currentState.number == cg.snap->ps.clientNum)
-		{
-
-			if (cgFPLSState != cg_fpls.integer)
-			{
-				CG_ForceFPLSPlayerModel(cent, ci);
-				cgFPLSState = cg_fpls.integer;
-				return;
-			}
-
-			/*
-			mdxaBone_t 		headMatrix;
-			trap_G2API_GetBoltMatrix(cent->ghoul2, 0, ci->bolt_head, &headMatrix, cent->turAngles, cent->lerpOrigin, cg.time, cgs.gameModels, cent->modelScale);
-			BG_GiveMeVectorFromMatrix(&headMatrix, ORIGIN, cg.refdef.vieworg);
-			*/
-			/*
-		}
-		else if (!cg_fpls.integer && cgFPLSState)
-		{
-			if (cgFPLSState != cg_fpls.integer)
-			{
-				CG_ForceFPLSPlayerModel(cent, ci);
-				cgFPLSState = cg_fpls.integer;
-				return;
-			}
-		}
-	}
-#endif
-	*/
-	//[/TrueView]
 
 	if (cent->currentState.eFlags & EF_DEAD)
 	{
@@ -19321,7 +19245,7 @@ stillDoSaber:
 				{
 					BG_SI_SetDesiredLength(&ci->saber[0], -1, -1);
 				}
-				if ( ci->saber[1].model	//dual sabers
+				if ( ci->saber[1].model[0]	//dual sabers
 					&& cent->currentState.saberHolstered == 1 )//second one off
 				{
 					//[SaberThrowSys]			
@@ -19356,7 +19280,7 @@ stillDoSaber:
 			{
 				BG_SI_SetDesiredLength(&ci->saber[0], -1, -1);
 			}
-			if ( ci->saber[1].model	//dual sabers
+			if ( ci->saber[1].model[0]	//dual sabers
 				&& cent->currentState.saberHolstered == 1 )//second one off
 			{
 				BG_SI_SetDesiredLength(&ci->saber[1], 0, -1);
@@ -19629,9 +19553,9 @@ stillDoSaber:
 
 				//const unsigned char savRGBA[3] = {legs.shaderRGBA[0],legs.shaderRGBA[1],legs.shaderRGBA[2]};
 				//[/MiscCodeTweaks]
-				legs.shaderRGBA[0] = max(255-subLen/4,1);
-				legs.shaderRGBA[1] = max(255-subLen/4,1);
-				legs.shaderRGBA[2] = max(255-subLen/4,1);
+				legs.shaderRGBA[0] = MAX(255-subLen/4,1);
+				legs.shaderRGBA[1] = MAX(255-subLen/4,1);
+				legs.shaderRGBA[2] = MAX(255-subLen/4,1);
 
 				legs.renderfx &= ~RF_RGB_TINT;
 				legs.renderfx &= ~RF_FORCE_ENT_ALPHA;
@@ -19641,9 +19565,9 @@ stillDoSaber:
 
 				legs.customShader = 0;	//reset to player model
 
-				legs.shaderRGBA[0] = max(savRGBA[0]-subLen/8,1);
-				legs.shaderRGBA[1] = max(savRGBA[1]-subLen/8,1);
-				legs.shaderRGBA[2] = max(savRGBA[2]-subLen/8,1);
+				legs.shaderRGBA[0] = MAX(savRGBA[0]-subLen/8,1);
+				legs.shaderRGBA[1] = MAX(savRGBA[1]-subLen/8,1);
+				legs.shaderRGBA[2] = MAX(savRGBA[2]-subLen/8,1);
 				}
 
 				if (subLen <= 1024)

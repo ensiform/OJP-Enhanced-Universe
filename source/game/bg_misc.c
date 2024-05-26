@@ -24,8 +24,6 @@
 extern void Q3_SetParm (int entID, int parmNum, const char *parmValue);
 #endif
 
-#include "../namespace_begin.h"
-
 const char *bgToggleableSurfaces[BG_NUM_TOGGLEABLE_SURFACES] = 
 {
 	"l_arm_key",					//0
@@ -908,17 +906,11 @@ qboolean BG_FileExists(const char *fileName)
 
 #ifndef UI_EXPORTS //don't need this stuff in the ui
 
-// Following functions don't need to be in namespace, they're already
-// different per-module
-#include "../namespace_end.h"
-
 #ifdef QAGAME
 char *G_NewString( const char *string );
 #else
 char *CG_NewString( const char *string );
 #endif
-
-#include "../namespace_begin.h"
 
 /*
 ===============
@@ -4300,14 +4292,3 @@ qboolean BG_IsUsingHeavyWeap (playerState_t *ps)
 		return qfalse;
 	};
 }
-/*cvar_t *Hook_FindCvar(const char *cvarname)
-{
-	__asm
-	{
-		mov edi, cvarname
-			mov eax, 0x4393B0
-			call eax
-	}
-}*/
-//[/ForceSys]
-#include "../namespace_end.h"

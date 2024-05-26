@@ -110,13 +110,7 @@ typedef enum {
 
 #define SP_PODIUM_MODEL		"models/mapobjects/podium/podium4.md3"
 
-//[Linux]
-#ifndef __linux__
 typedef enum {
-#else
-enum {
-#endif
-//[/Linux]
 	HL_NONE = 0,
 	HL_FOOT_RT,
 	HL_FOOT_LT,
@@ -141,7 +135,7 @@ enum {
 	HL_GENERIC5,
 	HL_GENERIC6,
 	HL_MAX
-};
+} hitLocation_t;
 
 
 //[TABBot]
@@ -152,13 +146,7 @@ enum {
 #define		MAX_OBJECTIVEDEPENDANCY	6
 
 //TAB bot orders/tactical options
-//[Linux]
-#ifndef __linux__
 typedef enum {
-#else
-enum {
-#endif
-//[/Linux]
 	BOTORDER_NONE,  //no order
 	BOTORDER_KNEELBEFOREZOD,  //Kneel before the ordered person
 	BOTORDER_SEARCHANDDESTROY,	//Attack mode.  If given an entity the bot will search for
@@ -179,17 +167,11 @@ enum {
 	BOTORDER_SIEGECLASS_HEAVY_WEAPONS,
 	*/
 	BOTORDER_MAX
-};
+} botOrder_t;
 
 
 //Seige Objective types
-//[Linux]
-#ifndef __linux__
 typedef enum {
-#else
-enum {
-#endif
-//[/Linux]
 	OT_NONE,	//no OT selected or bad OT
 	OT_ATTACK,	//Attack this objective, for destroyable stationary objectives
 	OT_DEFEND,  //Defend this objective, for destroyable stationary objectives 
@@ -199,8 +181,7 @@ enum {
 	OT_TOUCH,
 	OT_VEHICLE,  //get this vehicle to the related trigger_once.
 	OT_WAIT		//This is used by the bots to while they are waiting for a vehicle to respawn
-	
-};
+} botObjectiveType_t;
 //[/TABBot]
 
 
@@ -498,18 +479,11 @@ struct gentity_s {
 #define DAMAGEREDIRECT_RLEG		2
 #define DAMAGEREDIRECT_LLEG		3
 
-//[Linux]
-#ifndef __linux__
 typedef enum {
-#else
-enum {
-#endif
-//[/Linux]
 	CON_DISCONNECTED,
 	CON_CONNECTING,
 	CON_CONNECTED
-};
-typedef int clientConnected_t;
+} clientConnected_t;
 
 typedef enum {
 	SPECTATOR_NOT,
@@ -1392,8 +1366,6 @@ Ghoul2 Insert Start
 */
 int G_BoneIndex( const char *name );
 
-#include "../namespace_begin.h"
-
 qhandle_t	trap_R_RegisterSkin( const char *name );
 
 // CG specific API access
@@ -1466,8 +1438,6 @@ void		trap_G2API_AttachInstanceToEntNum(void *ghoul2, int entityNum, qboolean se
 void		trap_G2API_ClearAttachedInstance(int entityNum);
 void		trap_G2API_CleanEntAttachments(void);
 qboolean	trap_G2API_OverrideServer(void *serverInstance);
-
-#include "../namespace_end.h"
 
 /*
 Ghoul2 Insert End
@@ -1869,13 +1839,7 @@ void B_CleanupAlloc(void);
 
 
 //[TABBot]
-//[Linux]
-#ifndef __linux__
 typedef enum {
-#else
-enum {
-#endif
-//[/Linux]
 	//Use the JKA Default bot system.
 	BOT_DEFAULT,
 	//Use TAB bot system
@@ -1887,7 +1851,7 @@ enum {
 	//[Hybrid]
 	BOT_HYBRID
 	//[/Hybrid]
-};
+} botSystem_t;
 //[/TABBot]
 
 
@@ -2097,10 +2061,8 @@ extern	vmCvar_t	g_debugUp;
 //extern	vmCvar_t	g_blueteam;
 extern	vmCvar_t	g_smoothClients;
 
-#include "../namespace_begin.h"
 extern	vmCvar_t	pmove_fixed;
 extern	vmCvar_t	pmove_msec;
-#include "../namespace_end.h"
 
 extern	vmCvar_t	g_enableBreath;
 extern	vmCvar_t	g_singlePlayer;
@@ -2179,8 +2141,6 @@ extern  vmCvar_t	m_grapple_shoot_speed;
 extern	vmCvar_t	m_enable_grapple;
 extern	vmCvar_t	hookChangeProtectTime;						  
 extern vmCvar_t		g_allowDropSaber;
-
-#include "../namespace_begin.h"
 
 void	trap_Printf( const char *fmt );
 void	trap_Error( const char *fmt );
@@ -2531,6 +2491,4 @@ extern void Sphereshield_Off( gentity_t *self );
 extern void Overload_On( gentity_t *self );
 extern void Overload_Off( gentity_t *self );	
 
-
-#include "../namespace_end.h"
 #endif

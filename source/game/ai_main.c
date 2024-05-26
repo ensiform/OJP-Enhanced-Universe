@@ -3678,7 +3678,7 @@ int Siege_TargetClosestObjective(bot_state_t *bs, int flag)
 	int i = 0;
 	int bestindex = -1;
 	float testdistance = 0;
-	float bestdistance = 999999999;
+	float bestdistance = 999999999.9f;
 	gentity_t *goalent;
 	vec3_t a, dif;
 	vec3_t mins, maxs;

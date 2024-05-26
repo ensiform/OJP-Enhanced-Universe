@@ -1824,7 +1824,7 @@ void FastBotAI(bot_state_t *bs, float thinktime)
 				AIMod_Jump ( bs );
 			}
 		
-			if (trto)
+			if (trto) // Ensi: fixme trto is an array (vec3) always will be true
 
 			{// We have a possibility.. Check it and maybe use it.
 				VectorSubtract(trto, bs->origin, a);
@@ -3220,6 +3220,7 @@ qboolean visible (gentity_t *self, gentity_t *other)
 	trace_t		tr;
 	gentity_t	*traceEnt;
 
+	// Ensi: fixme both of these evaluate true therefore rest of function never called
 	if (!self->r.currentOrigin || !other->r.currentOrigin)
 		return qfalse;
 
@@ -4470,7 +4471,7 @@ void AOTC_StandardBotAI(bot_state_t *bs, float thinktime)
 				AIMod_Jump ( bs );
 			}
 		
-			if (trto)
+			if (trto) // Ensi: fixme always true
 
 			{// We have a possibility.. Check it and maybe use it.
 				VectorSubtract(trto, bs->origin, a);

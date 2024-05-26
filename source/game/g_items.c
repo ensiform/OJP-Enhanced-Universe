@@ -3903,9 +3903,7 @@ void EWebPrecache(void)
 #define EWEB_DEATH_RADIUS		128
 #define EWEB_DEATH_DMG			500
 
-#include "../namespace_begin.h"
 extern void BG_CycleInven(playerState_t *ps, int direction); //bg_misc.c
-#include "../namespace_end.h"
 
 void EWebDie(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int damage, int mod)
 {
@@ -4251,9 +4249,7 @@ void EWebUpdateBoneAngles(gentity_t *owner, gentity_t *eweb)
 }
 
 //keep it updated
-#include "../namespace_begin.h"
 extern int BG_EmplacedView(vec3_t baseAngles, vec3_t angles, float *newYaw, float constraint); //bg_misc.c
-#include "../namespace_end.h"
 
 void EWebThink(gentity_t *self)
 {
@@ -5465,7 +5461,7 @@ void FinishSpawningItem( gentity_t *ent ) {
 
 	// create a Ghoul2 model if the world model is a glm
 /*	item = &bg_itemlist[ ent->s.modelindex ];
-	if (!stricmp(&item->world_model[0][strlen(item->world_model[0]) - 4], ".glm"))
+	if (!Q_stricmp(&item->world_model[0][strlen(item->world_model[0]) - 4], ".glm"))
 	{
 		trap_G2API_InitGhoul2Model(&ent->s, item->world_model[0], G_ModelIndex(item->world_model[0] ), 0, 0, 0, 0);
 		ent->s.radius = 60;

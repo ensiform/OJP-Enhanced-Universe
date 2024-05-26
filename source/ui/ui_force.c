@@ -25,9 +25,7 @@ extern const char *UI_TeamName(int team);
 qboolean gTouchedForce = qfalse;
 vmCvar_t	ui_freeSaber, ui_forcePowerDisable;
 
-#include "../namespace_begin.h"
 void Menu_ShowItemByName(menuDef_t *menu, const char *p, qboolean bShow);
-#include "../namespace_end.h"
 
 int uiForceStarShaders[NUM_FORCE_STAR_IMAGES][2];
 int uiSaberColorShaders[NUM_SABER_COLORS];
@@ -571,6 +569,7 @@ void UpdateForceUsed()
 	{
 		if(uiRank[NUM_FORCE_POWERS+SK_JETPACK].uiForcePowersRank >= FORCE_LEVEL_1)
 		{//We have both jump and JP
+		// Ensi fixme prevRank is an array, checking boolean in if and else if is always true
 			if(prevRank && prevRank[NUM_FORCE_POWERS+SK_JETPACK].uiForcePowersRank == 0)
 			{//Just bought JP
 				uiRank[NUM_FORCE_POWERS+SK_JETPACK].uiForcePowersRank = 0;
