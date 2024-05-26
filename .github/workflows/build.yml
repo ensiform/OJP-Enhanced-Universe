@@ -23,13 +23,12 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     - name: Create Build Environment
-      shell: cmd
       run: cmake -E make_directory ${{github.workspace}}\build\actions
 
     - name: Configure CMake
       shell: bash
       working-directory: ${{github.workspace}}/build/actions
-      run: cmake -B . -S ${{github.workspace}}/source -G "Visual Studio 17 2022" -A ${{ matrix.arch }}
+      run: cmake -B . -S $GITHUB_WORKSPACE/source -G "Visual Studio 17 2022" -A ${{ matrix.arch }}
 
     - name: Build
       working-directory: ${{github.workspace}}/build/actions
@@ -48,7 +47,7 @@ jobs:
     strategy:
       matrix:
         build_type: [Debug, Release]
-        arch: [x86_64]
+        arch: [x86_64, arm64]
 
     steps:
     - uses: actions/checkout@v4
@@ -61,7 +60,7 @@ jobs:
     - name: Configure CMake
       shell: bash
       working-directory: ${{github.workspace}}/build/actions
-      run: cmake -B . -S ${{github.workspace}}/source -G "Ninja" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} 
+      run: cmake -B . -S $GITHUB_WORKSPACE/source -G "Ninja" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_OSX_ARCHITECTURES=${{ matrix.arch }}
 
     - name: Build
       working-directory: ${{github.workspace}}/build/actions
