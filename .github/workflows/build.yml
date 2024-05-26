@@ -28,7 +28,7 @@ jobs:
     - name: Configure CMake
       shell: bash
       working-directory: ${{github.workspace}}/build/actions
-      run: cmake -B . -S $GITHUB_WORKSPACE/source -G "Visual Studio 17 2022" -A ${{ matrix.arch }}
+      run: cmake -B . -S ${{github.workspace}}/source -G "Visual Studio 17 2022" -A ${{ matrix.arch }}
 
     - name: Build
       working-directory: ${{github.workspace}}/build/actions
@@ -39,7 +39,7 @@ jobs:
       if: ${{ matrix.build_type == 'Release' }}
       with:
         name: Windows Binaries, ${{ matrix.build_type }}, ${{ matrix.arch }}
-        path: ${{github.workspace}}/build/actions/out/*.dll
+        path: ${{github.workspace}}/build/actions/out/${{ matrix.build_type }}/*.dll
 
   macos:
     name: Build macOS, ${{ matrix.build_type }}, ${{ matrix.arch }}
@@ -55,12 +55,12 @@ jobs:
     - name: Create Build Environment
       run: |
         brew install ninja
-        mkdir -p ${{github.workspace}}/build/actions
+        cmake -E make_directory ${{github.workspace}}/build/actions
 
     - name: Configure CMake
       shell: bash
       working-directory: ${{github.workspace}}/build/actions
-      run: cmake -B . -S $GITHUB_WORKSPACE/source -G "Ninja" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} 
+      run: cmake -B . -S ${{github.workspace}}/source -G "Ninja" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} 
 
     - name: Build
       working-directory: ${{github.workspace}}/build/actions
@@ -74,7 +74,7 @@ jobs:
       with:
         name: macOS Binaries , ${{ matrix.build_type }}, ${{ matrix.arch }}
         path: |
-          ${{github.workspace}}/build/actions/out/*.dylib
+          ${{github.workspace}}/build/actions/*.dylib
 
   linux:
     name: Build Linux, ${{ matrix.build_type }}, ${{ matrix.arch }}
@@ -82,21 +82,33 @@ jobs:
     strategy:
       matrix:
         build_type: [Debug, Release]
-        arch: [x86_64]
-        #arch: [i386, x86_64] todo add 32-bit
+        arch: [x86, x86_64]
 
     steps:
     - uses: actions/checkout@v4
 
     - name: Create Build Environment
       run: |
-        mkdir -p ${{github.workspace}}/build/actions
-        sudo apt-get -y install ninja-build
+        if [ ${{ matrix.arch }} == "x86" ]; then
+          sudo dpkg --add-architecture i386
+          sudo apt-get -qq update
+          sudo apt-get -y install aptitude
+          sudo apt-get -y install gcc-multilib g++-multilib ninja-build
+        else
+          sudo apt-get -qq update
+          sudo apt-get -y install ninja-build
+        fi
+        cmake -E make_directory ${{github.workspace}}/build/actions
   
     - name: Configure CMake
       shell: bash
       working-directory: ${{github.workspace}}/build/actions
-      run: cmake -B . -S $GITHUB_WORKSPACE/source -G "Ninja" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} 
+      run: |
+        if [ ${{ matrix.arch }} == "x86" ]; then
+          cmake -B . -S $GITHUB_WORKSPACE/source -G "Ninja" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_TOOLCHAIN_FILE=$GITHUB_WORKSPACE/source/cmake/linux-x86.cmake
+        else
+          cmake -B . -S $GITHUB_WORKSPACE/source -G "Ninja" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        fi
 
     - name: Build
       working-directory: ${{github.workspace}}/build/actions
@@ -108,4 +120,4 @@ jobs:
       with:
         name: Liunx Binaries , ${{ matrix.build_type }}, ${{ matrix.arch }}
         path: |
-          ${{github.workspace}}/build/actions/out/*.so
+          ${{github.workspace}}/build/actions/*.so

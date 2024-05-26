@@ -126,7 +126,7 @@ if(MSVC)
     set(CMAKE_C_FLAGS_RELEASE "/MT")
 
     # Platform
-    set(GlobalDefines ${GlobalDefines} "UNICODE" "_UNICODE" "VS2005")
+    set(GlobalDefines ${GlobalDefines} "UNICODE" "_UNICODE")
 
     # Optimization
     set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} /MP") # multiprocessor compilation
