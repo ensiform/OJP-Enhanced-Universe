@@ -9,7 +9,7 @@ on:
 
 jobs:
   vs2022:
-    name: Build VS 2022, ${{ matrix.build_type }}, ${{ matrix.arch }}
+    name: Build Windows VS 2022, ${{ matrix.build_type }}, ${{ matrix.arch }}
     runs-on: windows-2022
     strategy:
       matrix:
